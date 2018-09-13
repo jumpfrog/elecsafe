@@ -1,0 +1,157 @@
+.pilldiv {
+    width: 270px;
+    height: 190px;
+    z-index: -1;
+    float: left;
+    padding-top: 10px;
+    border: #b9bbbc 1px solid;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    margin-left: 1%;
+    margin-top: 0;
+    cursor: pointer;
+    }
+
+.pilldivColor {
+    float: left;
+    padding: 7px;
+    background-image: none;
+    border: 0;
+    margin-left: 15px;
+    margin-top: 8px;
+    border-radius: 0;
+}
+.nameCount {
+    float: left;
+    margin-left: 5px;
+    width: 99px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: bolder;
+}
+.pilldivInfo {
+    padding: 2px 0;
+    font-size: 14px;
+    font-family: 'Microsoft YaHei';
+    line-height: 15px;
+    margin-bottom: 2px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.redname {
+    width: 50px;
+    text-align: left;
+    float: left;
+    font-size: 14px;
+}
+.rednameRight {
+    width: 50px;
+    text-align: left;
+    float: left;
+    font-size: 14px;
+    margin-left: 55px;
+    margin-top: 15;
+}
+.pilldivS {
+    float: left;
+    width: 270px;
+    height: 100px;
+    padding-left: 15px;
+    margin-top: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.pilldivButton {
+    float: left;
+    width: 270px;
+    height: 38px;
+    padding: 8px;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    font-weight: bolder;
+    font-family: "Microsoft YaHei";
+    margin-top: 5px;
+    margin-left: -1px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: 0;
+    outline: 0;
+    background-color: #d7d9db;
+    }
+.bgcolor {
+  background-color: #00c0ef;
+}
+.fontcolor{
+	color:#fff;
+}
+.navbar-toggleColor2 {
+    float: left;
+    margin-top: 16px;
+    margin-right: 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    width: 50px;
+}
+.navbar-toggleText {
+    float: left;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    margin-left: 10px;
+    margin-right: 5px;
+    font-size: 16px;
+    line-height: 16px;
+    background-image: none;
+    border: 0;
+    border-radius: 0px;
+}
+.wide {
+    margin-left: -12px;
+    margin-right: -12px;
+}
+/* 正常 */
+.statecolorOk {
+    background-color: #00a65a;
+}
+
+.statecolorM {
+    background-color: #63BBFF;
+}
+/* 离线 */
+.statecolorOffLine {
+    background-color: #d2d6de;
+}
+/* 告警*/
+.statecolorWaring {
+    background-color: #f39c12;
+}
+/* 故障*/
+.statecolorFault {
+    background-color: #dd4b39;
+}
+.navbar-toggleColor {
+    float: left;
+    padding: 7px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    background-image: none;
+    border: 0;
+    border-radius: 0px;
+    /* z-index: 1000; */
+}
+
+.pilldivSub{
+	margin-left: -55;
+}
+
+.nameCountSub{
+	margin-left: -35;
+}

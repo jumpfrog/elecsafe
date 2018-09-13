@@ -1,0 +1,31 @@
+/* small-box 单位 */
+.unit{
+	float:right;
+	font-size: 18px;
+	margin-top: -12px;
+}
+/* small-box 数据 */
+.sdata{
+	font-weight: normal !important;
+	font-size: 28px !important;;
+}
+
+/* .nav-tabs-custom>.nav-tabs>li.active {
+    border-top-color: #44a0fd;
+}
+
+.nav-tabs-custom>.nav-tabs>li.active>a, .nav-tabs-custom>.nav-tabs>li.active:hover>a {
+    background-color: #fff;
+    color: #44a0fd;
+}
+
+.nav-tabs-custom>.nav-tabs>li>a{
+    background-color: #eee;
+}
+
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 0.7;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+} */

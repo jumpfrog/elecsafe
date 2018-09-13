@@ -1,0 +1,89 @@
+.main-header .logo {
+    -webkit-transition: width .3s ease-in-out;
+    -o-transition: width .3s ease-in-out;
+    transition: width .3s ease-in-out;
+    display: block;
+    float: left;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    width: 330px;/* 修改 */
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding: 0 15px;
+    font-weight: 300;
+    overflow: hidden;
+}
+
+.main-header>.navbar {
+    -webkit-transition: margin-left .3s ease-in-out;
+    -o-transition: margin-left .3s ease-in-out;
+    transition: margin-left .3s ease-in-out;
+    margin-bottom: 0;
+    margin-left: 330px;/* 修改 */
+    border: none;
+    min-height: 50px;
+    border-radius: 0;
+}
+
+.skin-blue .main-header .logo {
+    background-color: #2492cf;/* 修改*/
+    color: #fff;
+    border-bottom: 0 solid transparent;
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #2492cf;/* 修改 */
+}
+
+/* 一级菜单选中颜色 */
+.skin-blue .main-header .navbar .nav>.active>a {
+	background-color:#1d75a6 !important;
+}
+
+/* 下拉二级菜单选中颜色 */
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
+    color: #1d75a6;
+    text-decoration: none;
+    background-color: #e1e3e9;
+    outline: 0;
+}
+
+
+.navbar-nav>.user-menu>.dropdown-menu {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    padding: 1px 0 0 0;
+    border-top-width: 0; 
+    width: 260px;/* 修改 */
+}
+
+.user-menu{
+	width: 260px;/* 修改 */
+	height: 50px;/* 修改 */
+}
+
+.navbar-ent {
+    float: left;
+    background-color: transparent;
+    background-image: none;
+    padding-top:15px;
+    color: #fff;
+    font-size: 16px;
+    /* font-weight: bold; */
+    height: 50px;
+}
+
+.navbar-ent:hover{
+	background-color: transparent;
+}
+
+.navbar-wheather {
+    padding-top: 6px;
+}
+
+
+
+
+
+

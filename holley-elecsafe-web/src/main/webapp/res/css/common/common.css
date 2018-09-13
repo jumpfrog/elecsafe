@@ -1,0 +1,154 @@
+@charset "utf-8";
+
+body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6, b, label{ font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
+
+/* 正在加载样式--------------------------------------------------------- */
+.loading{  
+    width:160px;
+    height:56px;
+    position: absolute;
+    top:40%;
+    left:45%;
+    line-height:56px;
+    color:#fff;
+    padding-left:60px;
+    font-size:15px;
+    background: #000 url(http://img.my.csdn.net/uploads/201211/14/1352886927_7549.gif) no-repeat 10px 50%;
+    z-index:9999;  
+    -moz-border-radius:20px;
+    -webkit-border-radius:20px;
+    border-radius:20px;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+}
+
+/* .box-shadow{  
+  -webkit-box-shadow:0 0 20px rgba(128, 128, 128, .8);   
+  -moz-box-shadow:0 0 20px rgba(128, 128, 128, .8);  
+  box-shadow:0 0 20px rgba(128, 128, 128, .8);  
+}  */
+
+/* tip框样式--------------------------------------------------------- */
+.popover{
+	max-width: 2000px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+/* 线条样式--------------------------------------------------------- */
+/* 灰色细线 */
+/* .hr-grey {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 1px solid #eee;
+} */ 
+
+/* 灰色虚线 */
+.dashed{
+	border-bottom:1px dashed #cdcdcd;
+	
+}
+
+hr {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+/* 文字样式 ----------------------------------------------------------*/
+/* p自动换行*/
+p{
+	white-space:normal;
+  	word-break:break-all;
+  	word-wrap:break-word;
+}
+
+.a-disable{ 
+	pointer-events:none; 
+	color:#afafaf; 
+	cursor:default;
+	/* cursor:not-allowed; */
+}
+
+/* 弹出提示框样式------------------------------------------------------ */
+.xcConfirm .popBox .ttBox {
+    height: 50px;
+    line-height: 30px;
+    padding: 14px 30px;
+    border-bottom: solid 1px #eef0f1;
+}
+
+.txtBox p {
+    height: 100px;
+    margin-top: 16px;
+    line-height: 26px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* 图片样式------------------------------------------------------ */
+/* 缩略图大小 */
+.img-thumbnail-size{
+	width: 200;
+	height: 200;
+}
+
+/* 按钮样式--------------------------------------------------------- */
+/* .btn-success,.btn-success:active,.btn-success:hover,.btn-success:focus{
+    outline: none;
+    border: none;
+    background-color: #5cb85c;
+} */
+
+/* 返回按钮样式 */
+.backBtn{
+	cursor:pointer;
+	font-weight: bold;
+	font-size: 16px;
+	padding-bottom: 10px;
+}
+
+
+.td-btn{
+	width:100%;
+	border-style:none;
+	background-color: transparent;
+	text-align:left;
+	color: #337ab7;
+	font-size: 14px;
+}
+
+/* easyui下拉框样式 */
+	.textbox {
+	    position: relative;
+	    border: 1px solid #ccc !important;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    color: #555 !important;
+	    background-color: #fff;
+	    vertical-align: middle;
+	    display: block;
+	    overflow: hidden;
+	    white-space: nowrap;
+	    margin: 0;
+	    padding: 0;
+	    -moz-border-radius: 0 !important;
+	    -webkit-border-radius: 0 !important;
+	    border-radius: 0 !important;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.holley.elecsafe.save.dao.DatEsDetectorEventMapper" >
+  
+  <insert id="insertEventList">
+  	insert into dat_es_detector_event (DETID, DATATIME, EVTTYPE, EVTDESC, DEALSTATUS, DEALTIME, DEALREMARK, DEALACCOUNT, UPDATETIME)
+  	values
+  	<foreach collection="list" item="item" index="index" separator=",">
+  	(#{item.detid}, #{item.datatime}, #{item.evttype}, #{item.evtdesc}, #{item.dealstatus}, #{item.dealtime}, 
+  	#{item.dealremark}, #{item.dealaccount}, now())
+  	</foreach>
+  </insert>
+  
+</mapper>

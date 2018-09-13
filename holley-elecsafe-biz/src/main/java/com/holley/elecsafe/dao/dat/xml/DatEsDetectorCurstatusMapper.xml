@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.holley.elecsafe.dao.dat.DatEsDetectorCurstatusMapper" >
+  <resultMap id="BaseResultMap" type="com.holley.elecsafe.model.dat.DatEsDetectorCurstatus" >
+    <id column="DETID" property="detid" jdbcType="INTEGER" />
+    <result column="DATATIME" property="datatime" jdbcType="TIMESTAMP" />
+    <result column="ISALARM" property="isalarm" jdbcType="SMALLINT" />
+    <result column="ISFAULT" property="isfault" jdbcType="SMALLINT" />
+    <result column="ISOFFLINE" property="isoffline" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DETID, DATATIME, ISALARM, ISFAULT, ISOFFLINE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorCurstatusExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dat_es_detector_curstatus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dat_es_detector_curstatus
+    where DETID = #{detid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dat_es_detector_curstatus
+    where DETID = #{detid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorCurstatusExample" >
+    delete from dat_es_detector_curstatus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorCurstatus" >
+    insert into dat_es_detector_curstatus (DETID, DATATIME, ISALARM, 
+      ISFAULT, ISOFFLINE)
+    values (#{detid,jdbcType=INTEGER}, #{datatime,jdbcType=TIMESTAMP}, #{isalarm,jdbcType=SMALLINT}, 
+      #{isfault,jdbcType=SMALLINT}, #{isoffline,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorCurstatus" >
+    insert into dat_es_detector_curstatus
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="detid != null" >
+        DETID,
+      </if>
+      <if test="datatime != null" >
+        DATATIME,
+      </if>
+      <if test="isalarm != null" >
+        ISALARM,
+      </if>
+      <if test="isfault != null" >
+        ISFAULT,
+      </if>
+      <if test="isoffline != null" >
+        ISOFFLINE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="detid != null" >
+        #{detid,jdbcType=INTEGER},
+      </if>
+      <if test="datatime != null" >
+        #{datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isalarm != null" >
+        #{isalarm,jdbcType=SMALLINT},
+      </if>
+      <if test="isfault != null" >
+        #{isfault,jdbcType=SMALLINT},
+      </if>
+      <if test="isoffline != null" >
+        #{isoffline,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorCurstatusExample" resultType="java.lang.Integer" >
+    select count(*) from dat_es_detector_curstatus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dat_es_detector_curstatus
+    <set >
+      <if test="record.detid != null" >
+        DETID = #{record.detid,jdbcType=INTEGER},
+      </if>
+      <if test="record.datatime != null" >
+        DATATIME = #{record.datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isalarm != null" >
+        ISALARM = #{record.isalarm,jdbcType=SMALLINT},
+      </if>
+      <if test="record.isfault != null" >
+        ISFAULT = #{record.isfault,jdbcType=SMALLINT},
+      </if>
+      <if test="record.isoffline != null" >
+        ISOFFLINE = #{record.isoffline,jdbcType=SMALLINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dat_es_detector_curstatus
+    set DETID = #{record.detid,jdbcType=INTEGER},
+      DATATIME = #{record.datatime,jdbcType=TIMESTAMP},
+      ISALARM = #{record.isalarm,jdbcType=SMALLINT},
+      ISFAULT = #{record.isfault,jdbcType=SMALLINT},
+      ISOFFLINE = #{record.isoffline,jdbcType=SMALLINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorCurstatus" >
+    update dat_es_detector_curstatus
+    <set >
+      <if test="datatime != null" >
+        DATATIME = #{datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isalarm != null" >
+        ISALARM = #{isalarm,jdbcType=SMALLINT},
+      </if>
+      <if test="isfault != null" >
+        ISFAULT = #{isfault,jdbcType=SMALLINT},
+      </if>
+      <if test="isoffline != null" >
+        ISOFFLINE = #{isoffline,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where DETID = #{detid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorCurstatus" >
+    update dat_es_detector_curstatus
+    set DATATIME = #{datatime,jdbcType=TIMESTAMP},
+      ISALARM = #{isalarm,jdbcType=SMALLINT},
+      ISFAULT = #{isfault,jdbcType=SMALLINT},
+      ISOFFLINE = #{isoffline,jdbcType=SMALLINT}
+    where DETID = #{detid,jdbcType=INTEGER}
+  </update>
+</mapper>

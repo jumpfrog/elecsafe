@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.holley.elecsafe.dao.EsDetectorMapper" >
+  	
+  	<select id="selectAllEsDetector" parameterType="java.util.Map" resultType="com.holley.elecsafe.model.es.EsDetector">
+  		select * from ES_DETECTOR where status = 1
+  		<if test="updatetime != null">
+  			and updatetime <![CDATA[ >= ]]> #{updatetime}
+  		</if>
+  	</select>
+	
+</mapper>

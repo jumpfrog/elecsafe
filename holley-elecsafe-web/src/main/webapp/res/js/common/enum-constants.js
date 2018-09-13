@@ -1,0 +1,49 @@
+//用户类型------------------------
+ACCOUNT_TYPE_ENTERPRISE = 1;//企业管理员
+ACCOUNT_TYPE_OPERATOR = 2;//操作员
+ACCOUNT_TYPE_PLATFORM = 3;//平台管理员
+ACCOUNT_TYPE_BUSINESS = 4;//运营商
+
+//操作类型-------------------------
+REQUEST_TYPE_ADD = 1;
+REQUEST_TYPE_EDIT = 2;
+REQUEST_TYPE_DETAIL = 3;
+
+//是否---------------------------
+WHETHER_NO = 0;//否
+WHETHER_YES = 1;//是
+
+//设备运行状态-----------------------
+RUNSTAUS_RUNNING = 1;//运行
+RUNSTAUS_STOP = 2;//停机
+RUNSTAUS_STANDBY_INIT = 3;//初始待机
+RUNSTAUS_KEY_POWEROFF = 4;//按键关机
+RUNSTAUS_STANDBY = 5;//待机
+RUNSTAUS_EMERGENCY_SYOP = 6;//紧急停机
+RUNSTAUS_STARTING = 7;//启动中
+RUNSTAUS_RUNNING_FAULT = 8;//运行故障
+RUNSTAUS_RUNNING_ALARM = 9;//告警运行
+RUNSTAUS_RUNNING_DERATE = 10;//降额运行
+RUNSTAUS_RUNNING_DISPATCH = 11;//调度运行
+RUNSTAUS_COMM_FAULT = 12;//通讯故障
+
+//设备类型
+DEVICETYPE_INVERTER = 1;//逆变器
+DEVICETYPE_EMI = 2;//环境监测仪
+DEVICETYPE_COMBINERBOX = 3;//汇流箱
+
+//对象类型
+ENTERPRISE = 11;
+STATION = 14;
+UNIT = 15;
+INVERTER = 16;
+ENVMONITOR = 18;
+//企业类型
+EntTypeEnum_TOP = 1;//顶级企业
+EntTypeEnum_SUB = 2;//子企业
+
+//角色等级
+ROLE_PLATFORM = 1;//平台管理员
+ROLE_BUSINESS = 2;//运营商管理员
+ROLE_ENTERPRISE = 3; //企业管理员
+ROLE_OPERATOR = 4;//企业操作员

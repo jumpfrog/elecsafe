@@ -1,0 +1,207 @@
+@charset "utf-8";
+
+body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6, b, label{ font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
+
+/* thead {
+    background-color: #bfc7d7;
+}  */
+
+/* .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+    border: 1px solid #ddd;
+} */ 
+
+/* 表单样式 ------------------------------------------------------*/
+/* form表单标题 */
+.form-header{
+    color:cdcdcd;
+	font-weight: bold;
+	font-size: 15px;
+	padding-left: 30px;
+}
+
+.form-control-static {
+    min-height: 27px; /* min-height: 34px; ---modify*/
+    padding-top: 7px;
+    padding-bottom: 0px;
+    margin-bottom: 0;
+}
+
+/* 按钮样式------------------------------------------------------ */
+.btn.btn-outline.green {
+    border-color: #32c5d2;
+    color: #32c5d2;
+    background: 0 0;
+}
+
+.btn-circle {
+    border-radius: 25px!important;
+    overflow: hidden;
+}
+
+.btn.btn-outline.green.active, .btn.btn-outline.green:active, .btn.btn-outline.green:active:focus, .btn.btn-outline.green:active:hover, .btn.btn-outline.green:focus, .btn.btn-outline.green:hover {
+    border-color: #32c5d2;
+    color: #FFF;
+    background-color: #32c5d2;
+}
+
+
+/* 表格样式------------------------------------------------------ */
+/* 表头样式 */
+.table-header{
+	/* background-color: #ccc; */
+	background-color:#cddff5;
+	color: #2492cf;
+	/* color: #327ad5; */
+}
+
+.table>tbody>tr:hover {  
+    background-color: #d6edfa !important;
+}
+
+.table-condensed>thead>tr, .table-condensed>tbody>tr{
+	font-size: 14px!important;
+}
+
+.fixed-table-container thead th .th-inner {
+    padding: 8px;
+    line-height: 14px;/* line-height: 25px; ---modify*/
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.table-bordered {
+    border: 1px solid #ddd;
+}
+
+/* .fixed-table-container{
+	table-layout: fixed;
+	word-wrap:break-word;
+} */
+
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
+    border: 1px solid #ddd;
+}
+
+/* 表格中的checkbox居中 */
+.fixed-table-container .bs-checkbox, .fixed-table-container .no-records-found {
+    text-align: center;
+    vertical-align: middle;/* ---add */
+}
+
+
+/* 分页条 */
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+/* 多选下拉框样式------------------------------------------------------ */
+/* .multiselect{
+	text-align: left;
+	padding-left: 10px;
+} */
+
+
+/* 模态框样式------------------------------------------------------ */
+/* #模态框标题样式 */
+.modal-header {
+    background-color: #2492cf
+}
+.modal-title {
+    color: #fff
+}
+
+/* 菜单样式------------------------------------------------------ */
+/* #菜单面包屑 */
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 0px;
+    list-style: none;
+    background-color: #f5f5f5;
+    /* border-radius: 4px; */
+}
+
+/* bootstrap下拉框-------------------------------------------------- */
+.dropdown-menu{
+	min-width: 0;
+	/* right: 0; */
+	float: right;
+	left: auto;
+	font-size: 13;
+}
+
+/* 按钮样式 */
+.btn-primary{
+	background-color: #2492cf;
+}
+
+/* 按钮组样式 */
+.btn-tab {
+    background-color: transparent;
+    color: #2492cf;
+    border-color: #2492cf;
+}
+
+.btn-tab.active, .btn-tab:active, .open>.dropdown-toggle.btn-tab {
+    /* color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad; */
+    color: #fff;
+    background-color: #2492cf;
+    border-color: #2492cf;
+} 
+/* 文本样式 */
+/* .text-aqua{
+	color: #2492cf;
+} */
+
+/* nav-tabs-custom tab样式------------------------------------------------------  */
+.nav-tabs-custom>.nav-tabs>li.active {
+    border-top-color: #44a0fd;
+}
+
+.nav-tabs-custom>.nav-tabs>li.active>a, .nav-tabs-custom>.nav-tabs>li.active:hover>a {
+    background-color: #fff;
+    color: #44a0fd;
+}
+
+.nav-tabs-custom>.nav-tabs>li>a{
+    background-color: #eee;
+}
+
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 0.7;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+
+/* 其他样式------------------------------------------------------ */
+/* 边框样式 */
+.border-grey{
+	border: 1px solid #ccc!important;
+}
+
+legend{
+	margin-bottom: 0;
+}
+
+.layui-layer-lan .layui-layer-title {
+    background: #2492CF !important;
+    color: #fff;
+    border: none;
+}
+/* 鼠标变小手 */
+.hand{
+	cursor: pointer;
+}
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.holley.elecsafe.save.dao.DatEsDetectorL2RealMapper" >
+  
+  <insert id="insertDetectorList">
+  	insert into dat_es_detector_l2_real (DETID, DATATIME, F, FA, FB, FC, P, PA, PB, PC, Q, QA, QB, QC,
+  	AP, APA, APB, APC, PF, PFA, PFB, PFC, ENERGYP, ENERGYPA, ENERGYPB, ENERGYPC, 
+  	ENERGYQ, ENERGYQA, ENERGYQB, ENERGYQC, ENERGYAP, ENERGYAPA, ENERGYAPB, ENERGYAPC, UPDATETIME)
+  	values
+  	<foreach collection="list" item="item" index="index" separator=",">
+  	(#{item.detid}, #{item.datatime}, #{item.f}, #{item.fa}, #{item.fb}, #{item.fc}, #{item.p}, 
+  	#{item.pa}, #{item.pb}, #{item.pc}, #{item.q}, #{item.qa}, #{item.qb}, #{item.qc}, #{item.ap}, #{item.apa}, #{item.apb}, #{item.apc},
+  	#{item.pf}, #{item.pfa}, #{item.pfb}, #{item.pfc}, #{item.energyp}, #{item.energypa}, #{item.energypb}, #{item.energypc},
+  	#{item.energyq}, #{item.energyqa}, #{item.energyqb}, #{item.energyqc}, #{item.energyap}, #{item.energyapa}, 
+  	#{item.energyapb}, #{item.energyapc}, now())
+  	</foreach>
+  	on duplicate key update DATATIME = ifnull(VALUES(DATATIME),DATATIME), F = ifnull(VALUES(F),F), FA = ifnull(VALUES(FA),FA),
+  	FB = ifnull(VALUES(FB),FB), FC = ifnull(VALUES(FC),FC), 
+  	P = ifnull(VALUES(P),P), PA = ifnull(VALUES(PA),PA), PB = ifnull(VALUES(PB),PB), PC = ifnull(VALUES(PC),PC), Q = ifnull(VALUES(Q),Q),
+  	QA = ifnull(VALUES(QA),QA), QB = ifnull(VALUES(QB),QB), QC = ifnull(VALUES(QC),QC),
+  	AP = ifnull(VALUES(AP),AP), APA = ifnull(VALUES(APA),APA), APB = ifnull(VALUES(APB),APB), APC = ifnull(VALUES(APC),APC), PF = ifnull(VALUES(PF),PF), 
+  	PFA = ifnull(VALUES(PFA),PFA), PFB = ifnull(VALUES(PFB),PFB), PFC = ifnull(VALUES(PFC),PFC),
+  	ENERGYP = ifnull(VALUES(ENERGYP),ENERGYP), ENERGYPA = ifnull(VALUES(ENERGYPA),ENERGYPA), ENERGYPB = ifnull(VALUES(ENERGYPB),ENERGYPB), ENERGYPC = ifnull(VALUES(ENERGYPC),ENERGYPC),
+  	ENERGYQ = ifnull(VALUES(ENERGYQ),ENERGYQ), ENERGYQA = ifnull(VALUES(ENERGYQA),ENERGYQA), ENERGYQB = ifnull(VALUES(ENERGYQB),ENERGYQB), ENERGYQC = ifnull(VALUES(ENERGYQC),ENERGYQC),
+  	ENERGYAP = ifnull(VALUES(ENERGYAP),ENERGYAP), ENERGYAPA = ifnull(VALUES(ENERGYAPA),ENERGYAPA), ENERGYAPB = ifnull(VALUES(ENERGYAPB),ENERGYAPB), ENERGYAPC = ifnull(VALUES(ENERGYAPC),ENERGYAPC),
+  	UPDATETIME = now()
+  </insert>
+  
+  <insert id="insertDetectorListHis">
+  	insert into dat_es_detector_l2_his (DETID, DATATIME, F, FA, FB, FC, P, PA, PB, PC, Q, QA, QB, QC,
+  	AP, APA, APB, APC, PF, PFA, PFB, PFC, ENERGYP, ENERGYPA, ENERGYPB, ENERGYPC, 
+  	ENERGYQ, ENERGYQA, ENERGYQB, ENERGYQC, ENERGYAP, ENERGYAPA, ENERGYAPB, ENERGYAPC, UPDATETIME)
+  	values
+  	<foreach collection="list" item="item" index="index" separator=",">
+  	(#{item.detid}, #{item.datatime}, #{item.f}, #{item.fa}, #{item.fb}, #{item.fc}, #{item.p}, 
+  	#{item.pa}, #{item.pb}, #{item.pc}, #{item.q}, #{item.qa}, #{item.qb}, #{item.qc}, #{item.ap}, #{item.apa}, #{item.apb}, #{item.apc},
+  	#{item.pf}, #{item.pfa}, #{item.pfb}, #{item.pfc}, #{item.energyp}, #{item.energypa}, #{item.energypb}, #{item.energypc},
+  	#{item.energyq}, #{item.energyqa}, #{item.energyqb}, #{item.energyqc}, #{item.energyap}, #{item.energyapa}, 
+  	#{item.energyapb}, #{item.energyapc}, now())
+  	</foreach>
+  	on duplicate key update F = VALUES(F), FA = VALUES(FA),FB = VALUES(FB), FC = VALUES(FC), 
+  	P = VALUES(P), PA = VALUES(PA), PB = VALUES(PB), PC = VALUES(PC), Q = VALUES(Q), QA = VALUES(QA), QB = VALUES(QB), QC = VALUES(QC),
+  	AP = VALUES(AP), APA = VALUES(APA), APB = VALUES(APB), APC = VALUES(APC), PF = VALUES(PF), PFA = VALUES(PFA), PFB = VALUES(PFB), PFC = VALUES(PFC),
+  	ENERGYP = VALUES(ENERGYP), ENERGYPA = VALUES(ENERGYPA), ENERGYPB = VALUES(ENERGYPB), ENERGYPC = VALUES(ENERGYPC),
+  	ENERGYQ = VALUES(ENERGYQ), ENERGYQA = VALUES(ENERGYQA), ENERGYQB = VALUES(ENERGYQB), ENERGYQC = VALUES(ENERGYQC),
+  	ENERGYAP = VALUES(ENERGYAP), ENERGYAPA = VALUES(ENERGYAPA), ENERGYAPB = VALUES(ENERGYAPB), ENERGYAPC = VALUES(ENERGYAPC),
+  	UPDATETIME = now()
+  </insert>
+  
+</mapper>

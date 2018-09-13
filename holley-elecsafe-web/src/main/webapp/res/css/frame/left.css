@@ -1,0 +1,41 @@
+/*左边菜单背景色*/
+.main-sidebar,.sidebar-menu,.sidebar-menu>li.header,.sidebar-menu>li>.treeview-menu{
+    background-color: #032f46 !important;
+}
+
+/*选中二级菜单背景颜色*/
+.treeview-menu>li.active>a,.treeview-menu>li.active>a:hover{
+    background-color:#1d75a6 !important;
+}
+
+/*菜单字体颜色*/
+.sidebar a,.treeview-menu>li>a{
+    color: #fff !important;
+}
+
+/*二级菜单鼠标划过颜色*/
+.treeview-menu>li>a:hover {
+    background: rgba(36,146,207,0.2) !important;
+}
+
+.treeview-topmenu{
+	font-size: 15px;
+}
+
+.treeview-menu a{
+	font-size: 14px;
+}
+
+.sidebar-header{
+	font-size: 14px;
+	color: #f9e491;
+	font-weight: bold;
+}
+
+/* .menu-icon{
+	color:#1d75a6;
+} */
+
+
+
+

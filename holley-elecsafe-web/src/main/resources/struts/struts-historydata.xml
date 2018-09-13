@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<!--历史数据  -->
+	<package name="historydata" namespace="/history" extends="struts-base">
+		<!-- 历史数据列表 -->
+		<action name="historyList" class="historyDataAction" method="init">
+			<result name="success">/jsp/historydata/historyList.jsp</result>
+		</action>
+	</package>
+	<package name="historydata_json" namespace="/history" extends="json-base">
+		<action name="historydata_*" class="historyDataAction" method="{1}">
+			<result type="json" />
+		</action>
+	</package>
+	
+</struts>

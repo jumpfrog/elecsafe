@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!--系统管理 -->
+	<package name="sys" namespace="/sys" extends="struts-base">
+		<!-- 账户管理 -->
+		<action name="account" class="accountAction" method="init">
+			<result name="success">/jsp/sys/accountList.jsp</result>
+		</action>
+		<action name="accountEditInit" class="accountAction" method="accountEditInit">
+			<result name="success">/jsp/sys/editAccount.jsp</result>
+		</action>
+	   <!-- 角色管理 -->
+		<action name="role" class="roleAction" method="init">
+			<result name="success">/jsp/sys/roleList.jsp</result>
+		</action>
+		<action name="roleEditInit" class="roleAction" method="roleEditInit">
+			<result name="success">/jsp/sys/editRole.jsp</result>		
+		</action>
+		<action name="loadPermissionInit" class="roleAction" method="loadPermissionInit">
+			<result name="success">/jsp/sys/rolePermission.jsp</result>
+		</action>
+		<!-- 登录日志 -->
+		<action name="webLog" class="webLogAction" method="init">
+			<result name="success">/jsp/sys/webLog.jsp</result>
+		</action>
+		<!-- 操作日志 -->
+	    <action name="hostLog" class="hostLogAction" method="init">
+	        <result name="success">/jsp/sys/hostLog.jsp</result>
+	    </action>
+	</package>
+	<!-- json -->
+	<package name="sys_json" namespace="/sys" extends="json-base">
+		<action name="account_*" class="accountAction" method="{1}">
+			<result type="json" />
+		</action>
+		<action name="hostLog_*" class="hostLogAction" method="{1}">
+			<result type="json" />
+		</action>
+		<action name="role_*" class="roleAction" method="{1}">
+			<result type="json" />
+		</action>
+		<action name="webLog_*" class="webLogAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
+</struts>

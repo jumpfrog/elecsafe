@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.holley.elecsafe.dao.es.EsDetectorMapper" >
+  <resultMap id="BaseResultMap" type="com.holley.elecsafe.model.es.EsDetector" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="SMALLINT" />
+    <result column="STATUS" property="status" jdbcType="SMALLINT" />
+    <result column="MODELID" property="modelid" jdbcType="SMALLINT" />
+    <result column="COMMADDR" property="commaddr" jdbcType="VARCHAR" />
+    <result column="PROTOCOLID" property="protocolid" jdbcType="SMALLINT" />
+    <result column="OWNERID" property="ownerid" jdbcType="INTEGER" />
+    <result column="OWNERTYPE" property="ownertype" jdbcType="SMALLINT" />
+    <result column="INSTALLADDR" property="installaddr" jdbcType="VARCHAR" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, NAME, TYPE, STATUS, MODELID, COMMADDR, PROTOCOLID, OWNERID, OWNERTYPE, INSTALLADDR, 
+    UPDATETIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.holley.elecsafe.model.es.EsDetectorExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from es_detector
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from es_detector
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from es_detector
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.holley.elecsafe.model.es.EsDetectorExample" >
+    delete from es_detector
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.holley.elecsafe.model.es.EsDetector" >
+    insert into es_detector (ID, NAME, TYPE, 
+      STATUS, MODELID, COMMADDR, 
+      PROTOCOLID, OWNERID, OWNERTYPE, 
+      INSTALLADDR, UPDATETIME)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=SMALLINT}, 
+      #{status,jdbcType=SMALLINT}, #{modelid,jdbcType=SMALLINT}, #{commaddr,jdbcType=VARCHAR}, 
+      #{protocolid,jdbcType=SMALLINT}, #{ownerid,jdbcType=INTEGER}, #{ownertype,jdbcType=SMALLINT}, 
+      #{installaddr,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.holley.elecsafe.model.es.EsDetector" useGeneratedKeys="true" keyProperty="id">
+    insert into es_detector
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="modelid != null" >
+        MODELID,
+      </if>
+      <if test="commaddr != null" >
+        COMMADDR,
+      </if>
+      <if test="protocolid != null" >
+        PROTOCOLID,
+      </if>
+      <if test="ownerid != null" >
+        OWNERID,
+      </if>
+      <if test="ownertype != null" >
+        OWNERTYPE,
+      </if>
+      <if test="installaddr != null" >
+        INSTALLADDR,
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="modelid != null" >
+        #{modelid,jdbcType=SMALLINT},
+      </if>
+      <if test="commaddr != null" >
+        #{commaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolid != null" >
+        #{protocolid,jdbcType=SMALLINT},
+      </if>
+      <if test="ownerid != null" >
+        #{ownerid,jdbcType=INTEGER},
+      </if>
+      <if test="ownertype != null" >
+        #{ownertype,jdbcType=SMALLINT},
+      </if>
+      <if test="installaddr != null" >
+        #{installaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.holley.elecsafe.model.es.EsDetectorExample" resultType="java.lang.Integer" >
+    select count(*) from es_detector
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update es_detector
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        TYPE = #{record.type,jdbcType=SMALLINT},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=SMALLINT},
+      </if>
+      <if test="record.modelid != null" >
+        MODELID = #{record.modelid,jdbcType=SMALLINT},
+      </if>
+      <if test="record.commaddr != null" >
+        COMMADDR = #{record.commaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.protocolid != null" >
+        PROTOCOLID = #{record.protocolid,jdbcType=SMALLINT},
+      </if>
+      <if test="record.ownerid != null" >
+        OWNERID = #{record.ownerid,jdbcType=INTEGER},
+      </if>
+      <if test="record.ownertype != null" >
+        OWNERTYPE = #{record.ownertype,jdbcType=SMALLINT},
+      </if>
+      <if test="record.installaddr != null" >
+        INSTALLADDR = #{record.installaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatetime != null" >
+        UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update es_detector
+    set ID = #{record.id,jdbcType=INTEGER},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      TYPE = #{record.type,jdbcType=SMALLINT},
+      STATUS = #{record.status,jdbcType=SMALLINT},
+      MODELID = #{record.modelid,jdbcType=SMALLINT},
+      COMMADDR = #{record.commaddr,jdbcType=VARCHAR},
+      PROTOCOLID = #{record.protocolid,jdbcType=SMALLINT},
+      OWNERID = #{record.ownerid,jdbcType=INTEGER},
+      OWNERTYPE = #{record.ownertype,jdbcType=SMALLINT},
+      INSTALLADDR = #{record.installaddr,jdbcType=VARCHAR},
+      UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.holley.elecsafe.model.es.EsDetector" >
+    update es_detector
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="modelid != null" >
+        MODELID = #{modelid,jdbcType=SMALLINT},
+      </if>
+      <if test="commaddr != null" >
+        COMMADDR = #{commaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolid != null" >
+        PROTOCOLID = #{protocolid,jdbcType=SMALLINT},
+      </if>
+      <if test="ownerid != null" >
+        OWNERID = #{ownerid,jdbcType=INTEGER},
+      </if>
+      <if test="ownertype != null" >
+        OWNERTYPE = #{ownertype,jdbcType=SMALLINT},
+      </if>
+      <if test="installaddr != null" >
+        INSTALLADDR = #{installaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.holley.elecsafe.model.es.EsDetector" >
+    update es_detector
+    set NAME = #{name,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=SMALLINT},
+      STATUS = #{status,jdbcType=SMALLINT},
+      MODELID = #{modelid,jdbcType=SMALLINT},
+      COMMADDR = #{commaddr,jdbcType=VARCHAR},
+      PROTOCOLID = #{protocolid,jdbcType=SMALLINT},
+      OWNERID = #{ownerid,jdbcType=INTEGER},
+      OWNERTYPE = #{ownertype,jdbcType=SMALLINT},
+      INSTALLADDR = #{installaddr,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 分页查询监测点状态-->
+  <select id="selectDetStatusByPage" parameterType="java.util.Map" resultType="com.holley.elecsafe.model.def.RealDataDetVo">
+  	SELECT det.NAME,det.MODELID,detStatus.*
+  	FROM
+  	es_detector det 
+  	LEFT JOIN 
+  	dat_es_detector_curstatus detStatus
+  	ON det.ID = detStatus.DETID
+  	WHERE det.OWNERID = #{eid}
+  	<if test="status != null">
+  		 AND det.STATUS = #{status}
+  	</if>
+  	<if test="keyword != null">
+		 AND det.NAME like CONCAT('%',#{keyword},'%')
+	</if>
+  </select>
+  
+    <!-- 查询单一监测点状态-->
+  <select id="selectSingleDetStatus" parameterType="java.lang.Integer" resultType="com.holley.elecsafe.model.def.RealDataDetVo">
+  	SELECT det.NAME,model.BRAND,det.TYPE,detStatus.*,
+  	hold.OVERU,hold.UNDERU,hold.OVERI,hold.IL,hold.TA,hold.TB,hold.TC,hold.TN,hold.TL,hold.TI
+  	FROM
+  	es_detector det 
+  	LEFT JOIN 
+  	dat_es_detector_curstatus detStatus
+  	ON det.ID = detStatus.DETID
+  	LEFT JOIN
+  	es_detector_model model
+  	ON det.MODELID = model.ID
+  	LEFT JOIN 
+  	es_detector_threshold hold
+	ON det.ID = hold.ID
+  	WHERE det.ID = #{detid}
+  	AND det.STATUS = 1
+  </select>
+  
+  <select id="selectDetectorByPage" parameterType="java.util.Map" resultType="com.holley.elecsafe.model.def.EsDetectorVo">
+  	SELECT det.*,ent.DISC entName,model.BRAND,protocol.NAME protocolName,
+  	hold.OVERU,hold.UNDERU,hold.OVERI,hold.IL,hold.TA,hold.TB,hold.TC,hold.TN,hold.TL,hold.TI
+  	FROM es_detector det
+	LEFT JOIN obj_enterprise ent
+	ON det.OWNERID = ent.EID
+	LEFT JOIN es_detector_model model
+	ON det.MODELID = model.ID
+	LEFT JOIN dic_detector_protocol protocol
+	ON det.PROTOCOLID = protocol.ID
+	LEFT JOIN es_detector_threshold hold
+	ON  det.ID = hold.ID
+	WHERE
+	Find_In_Set(concat(det.OWNERID,'@11'), Getchildlst(#{eid}, 5))
+	<if test="status != null">
+	 	 AND det.STATUS = #{status}
+	</if>
+	<if test="keyword != null">
+		 AND det.NAME like CONCAT('%',#{keyword},'%')
+	</if>
+	<if test="type != null">
+		AND det.TYPE = #{type}
+	</if>
+	ORDER BY det.UPDATETIME DESC
+  </select>
+  
+    <select id="selectSingleDetector" parameterType="java.util.Map" resultType="com.holley.elecsafe.model.def.EsDetectorVo">
+  	SELECT det.*,ent.DISC entName,model.BRAND,protocol.NAME protocolName,
+  	hold.OVERU,hold.UNDERU,hold.OVERI,hold.IL,hold.TA,hold.TB,hold.TC,hold.TN,hold.TL,hold.TI
+  	FROM es_detector det
+	LEFT JOIN obj_enterprise ent
+	ON det.OWNERID = ent.EID
+	LEFT JOIN es_detector_model model
+	ON det.MODELID = model.ID
+	LEFT JOIN dic_detector_protocol protocol
+	ON det.PROTOCOLID = protocol.ID
+	LEFT JOIN es_detector_threshold hold
+	ON  det.ID = hold.ID
+	WHERE
+	Find_In_Set(concat(det.OWNERID,'@11'), Getchildlst(#{eid}, 5))
+	AND det.ID = #{detid}
+	<if test="status != null">
+		AND det.STATUS=#{status}
+	</if>
+  </select>
+  
+  <select id="selectDetectorByEid" parameterType="java.util.Map" resultType="com.holley.elecsafe.model.def.EsDetectorVo">
+  	SELECT det.*,ent.DISC entName,model.BRAND,protocol.NAME protocolName,
+  	hold.OVERU,hold.UNDERU,hold.OVERI,hold.IL,hold.TA,hold.TB,hold.TC,hold.TN,hold.TL,hold.TI
+  	FROM es_detector det
+	LEFT JOIN obj_enterprise ent
+	ON det.OWNERID = ent.EID
+	LEFT JOIN es_detector_model model
+	ON det.MODELID = model.ID
+	LEFT JOIN dic_detector_protocol protocol
+	ON det.PROTOCOLID = protocol.ID
+	LEFT JOIN es_detector_threshold hold
+	ON  det.ID = hold.ID
+	WHERE det.OWNERID = #{eid}
+	<if test="status != null">
+		AND det.STATUS=#{status}
+	</if>
+  </select>
+  
+  <select id="countHomePageDataByEid" resultType="com.holley.elecsafe.model.def.RealDataEntVo">
+	SELECT count(1) detCount,IFNULL(sum(detstatus.ISALARM),0) waring,IFNULL(sum(detstatus.ISFAULT),0) fault,
+	(IFNULL(sum(detstatus.ISOFFLINE),0)+
+	(SELECT count(1) 
+	FROM es_detector det2
+	LEFT JOIN dat_es_detector_curstatus detstatus2
+	ON det2.ID = detstatus2.DETID
+	WHERE 
+	Find_In_Set(concat(det2.OWNERID,'@11'), Getchildlst(#{eid}, 5))
+	AND detstatus2.ISALARM is null
+	AND detstatus2.ISFAULT is null
+	AND detstatus2.ISOFFLINE is null
+	AND det2.STATUS = 1
+	))offLine
+	FROM es_detector det
+	LEFT JOIN dat_es_detector_curstatus detstatus
+	ON det.ID = detstatus.DETID
+	WHERE 
+	Find_In_Set(concat(det.OWNERID,'@11'), Getchildlst(#{eid}, 5))
+	AND det.STATUS = 1
+  </select>
+</mapper>

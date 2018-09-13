@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.holley.elecsafe.save.dao.DatEsDetectorCurstatusMapper" >
+  
+  <update id="updateCurstatusList" parameterType="java.util.List">
+  	update dat_es_detector_curstatus
+	    <trim prefix="set" suffixOverrides=",">
+	     <trim prefix="DATATIME =case" suffix="end,">
+	         <foreach collection="list" item="i" index="index">
+	                 <if test="i.datatime!=null">
+	                  when detid=#{i.detid} then #{i.datatime}
+	                 </if>
+	         </foreach>
+	      </trim>
+	      <trim prefix=" ISALARM =case" suffix="end,">
+	         <foreach collection="list" item="i" index="index">
+	                 <if test="i.isalarm!=null">
+	                  when detid=#{i.detid} then #{i.isalarm}
+	                 </if>
+	         </foreach>
+	      </trim>
+	      
+	      <trim prefix="ISFAULT =case" suffix="end," >
+	         <foreach collection="list" item="i" index="index">
+	                 <if test="i.isfault!=null">
+	                  when detid=#{i.detid} then #{i.isfault}
+	                 </if>
+	         </foreach>
+	      </trim>
+       	  <trim prefix="ISOFFLINE =case" suffix="end," >
+             <foreach collection="list" item="i" index="index">
+                     <if test="i.isoffline!=null">
+                      when detid=#{i.detid} then #{i.isoffline}
+                     </if>
+             </foreach>
+           </trim>
+          </trim>
+            where
+            <foreach collection="list" separator="or" item="i" index="index" >
+              detid=#{i.detid}
+          </foreach>
+  </update>
+  
+</mapper>

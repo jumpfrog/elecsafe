@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd       
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd       
+       http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd       
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	
+	<!-- 导入属性配置文件 --> 
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+        <property name="locations">  
+            <list>  
+                <value>classpath*:jdbc.properties</value>
+            </list>  
+        </property>  
+        <property name="propertiesPersister">
+			<bean class="com.holley.platform.common.util.PropertiesPersist" />
+		</property>   
+        <property name="ignoreUnresolvablePlaceholders" value="true" />   
+    </bean>      
+    	
+	<!-- 数据库的配置 ,dbcp连接池 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+	    <property name="driverClassName">
+	      <value>${jdbc.driverClassName}</value>  
+	   </property>
+	    <property name="url">
+	      <value>${jdbc.url}</value>  
+	   </property>
+	    <property name="username">
+	      <value>${jdbc.username}</value>  
+	   </property>
+	    <property name="password">
+	      <value>${jdbc.password}</value> 
+	   </property>	   
+	   <property name="initialSize" value="5" />	   
+	   <property name="timeBetweenEvictionRunsMillis" value="60000" />
+	   <property name="timeBetweenLogStatsMillis" value="30000000" /><!-- 定期把监控数据输出到日志中 -->
+	   <property name="minEvictableIdleTimeMillis" value="300000" />  
+	   <property name="filters" value="stat" />  	   
+	   <property name="maxActive"><value>${dbcp.maxActive}</value></property>  
+       <property name="maxWait"><value>${dbcp.maxActive}</value></property>	 
+       <property name="minIdle"><value>${dbcp.minIdle}</value></property>                 
+       <!--removeAbandoned: 是否自动回收超时连接-->  
+	   <property name="removeAbandoned" value="true"/>
+	   <!--removeAbandonedTimeout: 超时时间(以秒数为单位)-->  
+	   <property name="removeAbandonedTimeout" value="1800"/>  
+	   <property name="validationQuery">  
+			<value>select now()</value>  
+	   </property>  	     
+	</bean>	
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:/mybatis/sqlMapConfig_${DBProp}.xml" />
+		<property name="dataSource" ref="dataSource" />
+        <!--扫描sql配置文件，mapper需要的xml文件-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+	</bean>
+	
+    <!--扫描Dao接口包，动态实现Dao接口，注入到Sprring容器中-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--注入SqlSessionFactory,使用beanName-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!--给出扫描Dao接口包-->
+        <property name="basePackage" value="com.holley.elecsafe.dao"/>
+    </bean>
+    
+
+</beans>
+

@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.holley.elecsafe.dao.dat.DatEsDetectorEventMapper" >
+  <resultMap id="BaseResultMap" type="com.holley.elecsafe.model.dat.DatEsDetectorEvent" >
+    <id column="EVTID" property="evtid" jdbcType="INTEGER" />
+    <result column="DETID" property="detid" jdbcType="INTEGER" />
+    <result column="DATATIME" property="datatime" jdbcType="TIMESTAMP" />
+    <result column="EVTTYPE" property="evttype" jdbcType="SMALLINT" />
+    <result column="EVTDESC" property="evtdesc" jdbcType="VARCHAR" />
+    <result column="DEALSTATUS" property="dealstatus" jdbcType="SMALLINT" />
+    <result column="DEALTIME" property="dealtime" jdbcType="TIMESTAMP" />
+    <result column="DEALREMARK" property="dealremark" jdbcType="VARCHAR" />
+    <result column="DEALACCOUNT" property="dealaccount" jdbcType="VARCHAR" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    EVTID, DETID, DATATIME, EVTTYPE, EVTDESC, DEALSTATUS, DEALTIME, DEALREMARK, DEALACCOUNT, 
+    UPDATETIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorEventExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dat_es_detector_event
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dat_es_detector_event
+    where EVTID = #{evtid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dat_es_detector_event
+    where EVTID = #{evtid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorEventExample" >
+    delete from dat_es_detector_event
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorEvent" >
+    insert into dat_es_detector_event (EVTID, DETID, DATATIME, 
+      EVTTYPE, EVTDESC, DEALSTATUS, 
+      DEALTIME, DEALREMARK, DEALACCOUNT, 
+      UPDATETIME)
+    values (#{evtid,jdbcType=INTEGER}, #{detid,jdbcType=INTEGER}, #{datatime,jdbcType=TIMESTAMP}, 
+      #{evttype,jdbcType=SMALLINT}, #{evtdesc,jdbcType=VARCHAR}, #{dealstatus,jdbcType=SMALLINT}, 
+      #{dealtime,jdbcType=TIMESTAMP}, #{dealremark,jdbcType=VARCHAR}, #{dealaccount,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorEvent" >
+    insert into dat_es_detector_event
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="evtid != null" >
+        EVTID,
+      </if>
+      <if test="detid != null" >
+        DETID,
+      </if>
+      <if test="datatime != null" >
+        DATATIME,
+      </if>
+      <if test="evttype != null" >
+        EVTTYPE,
+      </if>
+      <if test="evtdesc != null" >
+        EVTDESC,
+      </if>
+      <if test="dealstatus != null" >
+        DEALSTATUS,
+      </if>
+      <if test="dealtime != null" >
+        DEALTIME,
+      </if>
+      <if test="dealremark != null" >
+        DEALREMARK,
+      </if>
+      <if test="dealaccount != null" >
+        DEALACCOUNT,
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="evtid != null" >
+        #{evtid,jdbcType=INTEGER},
+      </if>
+      <if test="detid != null" >
+        #{detid,jdbcType=INTEGER},
+      </if>
+      <if test="datatime != null" >
+        #{datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evttype != null" >
+        #{evttype,jdbcType=SMALLINT},
+      </if>
+      <if test="evtdesc != null" >
+        #{evtdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dealstatus != null" >
+        #{dealstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="dealtime != null" >
+        #{dealtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealremark != null" >
+        #{dealremark,jdbcType=VARCHAR},
+      </if>
+      <if test="dealaccount != null" >
+        #{dealaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorEventExample" resultType="java.lang.Integer" >
+    select count(*) from dat_es_detector_event
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dat_es_detector_event
+    <set >
+      <if test="record.evtid != null" >
+        EVTID = #{record.evtid,jdbcType=INTEGER},
+      </if>
+      <if test="record.detid != null" >
+        DETID = #{record.detid,jdbcType=INTEGER},
+      </if>
+      <if test="record.datatime != null" >
+        DATATIME = #{record.datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.evttype != null" >
+        EVTTYPE = #{record.evttype,jdbcType=SMALLINT},
+      </if>
+      <if test="record.evtdesc != null" >
+        EVTDESC = #{record.evtdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dealstatus != null" >
+        DEALSTATUS = #{record.dealstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="record.dealtime != null" >
+        DEALTIME = #{record.dealtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.dealremark != null" >
+        DEALREMARK = #{record.dealremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dealaccount != null" >
+        DEALACCOUNT = #{record.dealaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatetime != null" >
+        UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dat_es_detector_event
+    set EVTID = #{record.evtid,jdbcType=INTEGER},
+      DETID = #{record.detid,jdbcType=INTEGER},
+      DATATIME = #{record.datatime,jdbcType=TIMESTAMP},
+      EVTTYPE = #{record.evttype,jdbcType=SMALLINT},
+      EVTDESC = #{record.evtdesc,jdbcType=VARCHAR},
+      DEALSTATUS = #{record.dealstatus,jdbcType=SMALLINT},
+      DEALTIME = #{record.dealtime,jdbcType=TIMESTAMP},
+      DEALREMARK = #{record.dealremark,jdbcType=VARCHAR},
+      DEALACCOUNT = #{record.dealaccount,jdbcType=VARCHAR},
+      UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorEvent" >
+    update dat_es_detector_event
+    <set >
+      <if test="detid != null" >
+        DETID = #{detid,jdbcType=INTEGER},
+      </if>
+      <if test="datatime != null" >
+        DATATIME = #{datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evttype != null" >
+        EVTTYPE = #{evttype,jdbcType=SMALLINT},
+      </if>
+      <if test="evtdesc != null" >
+        EVTDESC = #{evtdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dealstatus != null" >
+        DEALSTATUS = #{dealstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="dealtime != null" >
+        DEALTIME = #{dealtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealremark != null" >
+        DEALREMARK = #{dealremark,jdbcType=VARCHAR},
+      </if>
+      <if test="dealaccount != null" >
+        DEALACCOUNT = #{dealaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where EVTID = #{evtid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorEvent" >
+    update dat_es_detector_event
+    set DETID = #{detid,jdbcType=INTEGER},
+      DATATIME = #{datatime,jdbcType=TIMESTAMP},
+      EVTTYPE = #{evttype,jdbcType=SMALLINT},
+      EVTDESC = #{evtdesc,jdbcType=VARCHAR},
+      DEALSTATUS = #{dealstatus,jdbcType=SMALLINT},
+      DEALTIME = #{dealtime,jdbcType=TIMESTAMP},
+      DEALREMARK = #{dealremark,jdbcType=VARCHAR},
+      DEALACCOUNT = #{dealaccount,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=TIMESTAMP}
+    where EVTID = #{evtid,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 分页查询事件记录 -->
+  <select id="selectDetectorEventByPage" parameterType="java.util.Map" resultType="com.holley.elecsafe.model.def.DetectorEvent">
+  	SELECT d.name as detname,e.disc as ownername,de.evtid, de.datatime, de.detid, de.evttype, de.evtdesc, 
+  	       de.dealstatus, de.dealtime, de.dealaccount, de.dealremark, de.updatetime
+	  FROM es_detector d,(<include refid="com.holley.elecsafe.dao.common.EnergyCommonMapper.selectChildEntSelfSql" />) e,dat_es_detector_event de
+     WHERE d.ownerid = e.eid
+       AND d.ownertype = 11
+       AND d.id = de.detid
+       <if test="starttime != null">
+       	AND de.datatime &gt;= #{starttime}
+       </if>
+       <if test="endtime != null">
+       	AND de.datatime &lt; #{endtime}
+       </if>
+       <if test="dealstatus != null">
+       	AND de.dealstatus = #{dealstatus}
+       </if>
+       <if test="status != null">
+        AND d.STATUS = #{status}
+       </if>
+       <if test="evttypes != null">
+       	AND de.evttype IN (
+       	<foreach collection="evttypes" item="item" separator=",">
+       		#{item}
+       	</foreach>
+       	)
+       </if>
+       <if test="keyword != null">
+		   AND (
+				 	d.name LIKE CONCAT('%',#{keyword},'%')
+				 OR e.disc LIKE CONCAT('%',#{keyword},'%')
+				 OR de.evtdesc LIKE CONCAT('%',#{keyword},'%')
+		  		)
+	   </if>
+       ORDER BY de.datatime DESC
+  </select>
+  
+  <!-- 批量更新事件记录 -->
+  <update id="updateDetectorEventDealStatusBatch" parameterType="java.util.List">
+  	<foreach collection="list" item="item" separator=";">
+	    update dat_es_detector_event
+	    <set>
+        	DEALSTATUS = #{item.dealstatus,jdbcType=SMALLINT},
+        	DEALTIME = #{item.dealtime,jdbcType=TIMESTAMP},
+        	DEALREMARK = #{item.dealremark,jdbcType=VARCHAR},
+        	DEALACCOUNT = #{item.dealaccount,jdbcType=VARCHAR}
+	    </set>
+	    <where>
+        	EVTID = #{item.evtid,jdbcType=INTEGER}
+	    </where>
+  	</foreach>
+  </update>
+  
+  <select id="countHomePageData" resultType="com.holley.elecsafe.model.def.HomePageDataVo">
+	  SELECT 
+	  DETID,COUNT(1) count
+	  FROM dat_es_detector_event detEvent
+	  LEFT JOIN es_detector detector
+	  ON detEvent.DETID = detector.ID
+	  WHERE
+	  Find_In_Set(concat(detector.OWNERID,'@11'), Getchildlst(#{eid}, 5))
+	  AND YEAR(detEvent.DATATIME) = #{year}
+	  <if test="dealStatus != null">
+	  	AND detEvent.DEALSTATUS = #{dealStatus}
+	  </if>
+	  <if test="isGroup != null">
+	  	GROUP BY DETID
+	  </if>
+  </select>
+  <select id="selectNewEventByMap" resultType="com.holley.elecsafe.model.def.DetectorEvent">
+  	SELECT detevent.*,det.NAME detname
+  	FROM 
+  	dat_es_detector_event detevent
+  	LEFT JOIN es_detector det
+  	ON detevent.DETID = det.ID
+  	WHERE det.OWNERID = #{eid}
+    AND det.OWNERTYPE = 11
+    <if test="preTime != null">
+    AND detevent.DATATIME &gt; #{preTime}
+    </if>
+    ORDER BY detevent.DATATIME DESC
+    LIMIT 1
+  </select>
+  
+  <select id="selectDetEventForStat" resultType="com.holley.elecsafe.model.def.DetectorEvent">
+  	SELECT detevent.*,det.NAME detname
+  	FROM 
+  	dat_es_detector_event detevent
+  	LEFT JOIN es_detector det
+  	ON detevent.DETID = det.ID
+  	WHERE det.OWNERID = #{eid}
+    AND det.OWNERTYPE = 11
+    <if test="startTimeDate != null">
+		AND detevent.DATATIME &gt;= #{startTimeDate}
+	</if>
+	<if test="endTimeDate != null">
+		AND detevent.DATATIME  &lt;= #{endTimeDate}
+	</if>
+	<if test="status != null">
+		AND det.STATUS = #{status}
+	</if>
+    ORDER BY detevent.DATATIME DESC
+  </select>
+</mapper>

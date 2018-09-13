@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xsi:schemaLocation="       
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd       
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd       
+      http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd       
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd       
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+      http://www.springframework.org/schema/flex http://www.springframework.org/schema/flex/spring-flex-1.5.xsd"
+	default-autowire="byName">
+	
+	<bean id="cachedModuledefUtil" class="com.holley.platform.util.CachedModuledefUtil" init-method="init">
+		<property name="defaultSystemid" value="3" />
+	</bean>
+	<bean id="cachedButtondefUtil" class="com.holley.platform.util.CachedButtondefUtil" init-method="init" >
+		<property name="defaultSystemid" value="3" />
+	</bean>
+	<bean id="cachedCityUtil" class="com.holley.elecsafe.common.util.CachedCityUtil" init-method="init" />
+	<bean id="cachedBusinessTypefUtil" class="com.holley.elecsafe.common.util.CachedBusinessTypeUtil" init-method="init" />
+
+	<bean id="cacheSysHolder" class="com.holley.platform.util.CacheSysHolder" init-method="init" >
+		<property name="defaultSystemid" value="3" /> 
+	</bean>	
+	<bean id="hostLogUtils" class="com.holley.platform.util.HostLogUtils">	
+		<property name="defaultSystemid" value="3" />
+	</bean>
+	
+	<bean id="searchCommService" class="com.holley.elecsafe.serviceimpl.common.SearchCommServiceImpl"/>
+	<bean id="treeCommService" class="com.holley.elecsafe.serviceimpl.common.TreeCommServiceImpl"/>
+	<bean id="dictionaryService" class="com.holley.elecsafe.serviceimpl.dic.DictionaryServiceImpl"/>
+			
+</beans>

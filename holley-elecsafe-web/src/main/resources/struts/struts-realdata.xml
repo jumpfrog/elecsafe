@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<!--实时数据  -->
+	<package name="realdata" namespace="/real" extends="struts-base">
+		<!-- 企业列表 -->
+		<action name="enterpriseList" class="realDataAction" method="init">
+			<result name="success">/jsp/realdata/enterpriseList.jsp</result>
+		</action>
+		<!-- 设备列表 -->
+		<action name="deviceList" class="realDataAction" method="deviceInit">
+			<result name="success">/jsp/realdata/deviceList.jsp</result>
+		</action>
+	</package>
+	<package name="realdata_json" namespace="/real" extends="json-base">
+		<action name="realdata_*" class="realDataAction" method="{1}">
+			<result type="json" />
+		</action>
+	</package>
+	
+</struts>

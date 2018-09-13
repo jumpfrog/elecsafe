@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<!--监测点档案信息  -->
+	<package name="detectorData" namespace="/detector" extends="struts-base">
+		<!-- 监测点列表 -->
+		<action name="detectorList" class="detectorDataAction" method="init">
+			<result name="success">/jsp/detectordata/detectorList.jsp</result>
+		</action>
+		<!-- 新增修改监测点 -->
+		<action name="detectorAddOrEdit" class="detectorDataAction" method="addOrEditInit">
+			<result name="success">/jsp/detectordata/addOrEditDetector.jsp</result>
+		</action>
+		
+	</package>
+	<package name="detectordata_json" namespace="/detector" extends="json-base">
+		<action name="detectordata_*" class="detectorDataAction" method="{1}">
+			<result type="json" />
+		</action>
+	</package>
+	
+</struts>

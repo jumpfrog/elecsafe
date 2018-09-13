@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.holley.elecsafe.save.dao.DatEsDetectorL1RealMapper" >
+  
+  <insert id="insertDetectorList">
+  	insert into dat_es_detector_l1_real (DETID, DATATIME, U, UA, UB, UC, I, IA, IB, IC, INX, IL, TA, TB, TC, TN, TL, TI, UPDATETIME)
+  	values
+  	<foreach collection="list" item="item" index="index" separator=",">
+  	(#{item.detid}, #{item.datatime}, #{item.u}, #{item.ua}, #{item.ub}, #{item.uc}, 
+  	#{item.i}, #{item.ia}, #{item.ib}, #{item.ic}, #{item.inx}, #{item.il}, #{item.ta}, #{item.tb}, 
+  	#{item.tc}, #{item.tn}, #{item.tl}, #{item.ti}, now())
+  	</foreach>
+  	on duplicate key update DATATIME = ifnull(VALUES(DATATIME),DATATIME), U = ifnull(VALUES(U),U), UA = ifnull(VALUES(UA),UA),
+  	UB = ifnull(VALUES(UB),UB), UC = ifnull(VALUES(UC),UC), I = ifnull(VALUES(I),I), IA = ifnull(VALUES(IA),IA),
+  	IB = ifnull(VALUES(IB),IB), IC = ifnull(VALUES(IC),IC), INX = ifnull(VALUES(INX),INX), IL = ifnull(VALUES(IL),IL),
+  	TA = ifnull(VALUES(TA),TA), TB = ifnull(VALUES(TB),TB), TC = ifnull(VALUES(TC),TC),
+  	TN = ifnull(VALUES(TN),TN), TL = ifnull(VALUES(TL),TL), TI = ifnull(VALUES(TI),TI), UPDATETIME = now()
+  </insert>
+  
+  <insert id="insertDetectorListHis">
+  	insert into dat_es_detector_l1_his (DETID, DATATIME, U, UA, UB, UC, I, IA, IB, IC, INX, IL, TA, TB, TC, TN, TL, TI, UPDATETIME)
+  	values
+  	<foreach collection="list" item="item" index="index" separator=",">
+  	(#{item.detid}, #{item.datatime}, #{item.u}, #{item.ua}, #{item.ub}, #{item.uc}, 
+  	#{item.i}, #{item.ia}, #{item.ib}, #{item.ic}, #{item.inx}, #{item.il}, #{item.ta}, #{item.tb}, 
+  	#{item.tc}, #{item.tn}, #{item.tl}, #{item.ti}, now())
+  	</foreach>
+  	on duplicate key update U = VALUES(U), UA = VALUES(UA),
+  	UB = VALUES(UB), UC = VALUES(UC), I = VALUES(I), IA = VALUES(IA),
+  	IB = VALUES(IB), IC = VALUES(IC), INX = VALUES(INX), IL = VALUES(IL),
+  	TA = VALUES(TA), TB = VALUES(TB), TC = VALUES(TC),
+  	TN = VALUES(TN), TL = VALUES(TL), TI = VALUES(TI), UPDATETIME = now()
+  </insert>
+  
+</mapper>

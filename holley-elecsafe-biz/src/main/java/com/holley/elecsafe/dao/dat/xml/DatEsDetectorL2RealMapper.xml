@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.holley.elecsafe.dao.dat.DatEsDetectorL2RealMapper" >
+  <resultMap id="BaseResultMap" type="com.holley.elecsafe.model.dat.DatEsDetectorL2Real" >
+    <id column="DETID" property="detid" jdbcType="INTEGER" />
+    <result column="DATATIME" property="datatime" jdbcType="TIMESTAMP" />
+    <result column="F" property="f" jdbcType="DECIMAL" />
+    <result column="FA" property="fa" jdbcType="DECIMAL" />
+    <result column="FB" property="fb" jdbcType="DECIMAL" />
+    <result column="FC" property="fc" jdbcType="DECIMAL" />
+    <result column="P" property="p" jdbcType="DECIMAL" />
+    <result column="PA" property="pa" jdbcType="DECIMAL" />
+    <result column="PB" property="pb" jdbcType="DECIMAL" />
+    <result column="PC" property="pc" jdbcType="DECIMAL" />
+    <result column="Q" property="q" jdbcType="DECIMAL" />
+    <result column="QA" property="qa" jdbcType="DECIMAL" />
+    <result column="QB" property="qb" jdbcType="DECIMAL" />
+    <result column="QC" property="qc" jdbcType="DECIMAL" />
+    <result column="AP" property="ap" jdbcType="DECIMAL" />
+    <result column="APA" property="apa" jdbcType="DECIMAL" />
+    <result column="APB" property="apb" jdbcType="DECIMAL" />
+    <result column="APC" property="apc" jdbcType="DECIMAL" />
+    <result column="PF" property="pf" jdbcType="DECIMAL" />
+    <result column="PFA" property="pfa" jdbcType="DECIMAL" />
+    <result column="PFB" property="pfb" jdbcType="DECIMAL" />
+    <result column="PFC" property="pfc" jdbcType="DECIMAL" />
+    <result column="ENERGYP" property="energyp" jdbcType="DECIMAL" />
+    <result column="ENERGYPA" property="energypa" jdbcType="DECIMAL" />
+    <result column="ENERGYPB" property="energypb" jdbcType="DECIMAL" />
+    <result column="ENERGYPC" property="energypc" jdbcType="DECIMAL" />
+    <result column="ENERGYQ" property="energyq" jdbcType="DECIMAL" />
+    <result column="ENERGYQA" property="energyqa" jdbcType="DECIMAL" />
+    <result column="ENERGYQB" property="energyqb" jdbcType="DECIMAL" />
+    <result column="ENERGYQC" property="energyqc" jdbcType="DECIMAL" />
+    <result column="ENERGYAP" property="energyap" jdbcType="DECIMAL" />
+    <result column="ENERGYAPA" property="energyapa" jdbcType="DECIMAL" />
+    <result column="ENERGYAPB" property="energyapb" jdbcType="DECIMAL" />
+    <result column="ENERGYAPC" property="energyapc" jdbcType="DECIMAL" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DETID, DATATIME, F, FA, FB, FC, P, PA, PB, PC, Q, QA, QB, QC, AP, APA, APB, APC, 
+    PF, PFA, PFB, PFC, ENERGYP, ENERGYPA, ENERGYPB, ENERGYPC, ENERGYQ, ENERGYQA, ENERGYQB, 
+    ENERGYQC, ENERGYAP, ENERGYAPA, ENERGYAPB, ENERGYAPC, UPDATETIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL2RealExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dat_es_detector_l2_real
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dat_es_detector_l2_real
+    where DETID = #{detid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dat_es_detector_l2_real
+    where DETID = #{detid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL2RealExample" >
+    delete from dat_es_detector_l2_real
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL2Real" >
+    insert into dat_es_detector_l2_real (DETID, DATATIME, F, 
+      FA, FB, FC, P, 
+      PA, PB, PC, Q, 
+      QA, QB, QC, AP, 
+      APA, APB, APC, PF, 
+      PFA, PFB, PFC, ENERGYP, 
+      ENERGYPA, ENERGYPB, ENERGYPC, 
+      ENERGYQ, ENERGYQA, ENERGYQB, 
+      ENERGYQC, ENERGYAP, ENERGYAPA, 
+      ENERGYAPB, ENERGYAPC, UPDATETIME
+      )
+    values (#{detid,jdbcType=INTEGER}, #{datatime,jdbcType=TIMESTAMP}, #{f,jdbcType=DECIMAL}, 
+      #{fa,jdbcType=DECIMAL}, #{fb,jdbcType=DECIMAL}, #{fc,jdbcType=DECIMAL}, #{p,jdbcType=DECIMAL}, 
+      #{pa,jdbcType=DECIMAL}, #{pb,jdbcType=DECIMAL}, #{pc,jdbcType=DECIMAL}, #{q,jdbcType=DECIMAL}, 
+      #{qa,jdbcType=DECIMAL}, #{qb,jdbcType=DECIMAL}, #{qc,jdbcType=DECIMAL}, #{ap,jdbcType=DECIMAL}, 
+      #{apa,jdbcType=DECIMAL}, #{apb,jdbcType=DECIMAL}, #{apc,jdbcType=DECIMAL}, #{pf,jdbcType=DECIMAL}, 
+      #{pfa,jdbcType=DECIMAL}, #{pfb,jdbcType=DECIMAL}, #{pfc,jdbcType=DECIMAL}, #{energyp,jdbcType=DECIMAL}, 
+      #{energypa,jdbcType=DECIMAL}, #{energypb,jdbcType=DECIMAL}, #{energypc,jdbcType=DECIMAL}, 
+      #{energyq,jdbcType=DECIMAL}, #{energyqa,jdbcType=DECIMAL}, #{energyqb,jdbcType=DECIMAL}, 
+      #{energyqc,jdbcType=DECIMAL}, #{energyap,jdbcType=DECIMAL}, #{energyapa,jdbcType=DECIMAL}, 
+      #{energyapb,jdbcType=DECIMAL}, #{energyapc,jdbcType=DECIMAL}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL2Real" >
+    insert into dat_es_detector_l2_real
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="detid != null" >
+        DETID,
+      </if>
+      <if test="datatime != null" >
+        DATATIME,
+      </if>
+      <if test="f != null" >
+        F,
+      </if>
+      <if test="fa != null" >
+        FA,
+      </if>
+      <if test="fb != null" >
+        FB,
+      </if>
+      <if test="fc != null" >
+        FC,
+      </if>
+      <if test="p != null" >
+        P,
+      </if>
+      <if test="pa != null" >
+        PA,
+      </if>
+      <if test="pb != null" >
+        PB,
+      </if>
+      <if test="pc != null" >
+        PC,
+      </if>
+      <if test="q != null" >
+        Q,
+      </if>
+      <if test="qa != null" >
+        QA,
+      </if>
+      <if test="qb != null" >
+        QB,
+      </if>
+      <if test="qc != null" >
+        QC,
+      </if>
+      <if test="ap != null" >
+        AP,
+      </if>
+      <if test="apa != null" >
+        APA,
+      </if>
+      <if test="apb != null" >
+        APB,
+      </if>
+      <if test="apc != null" >
+        APC,
+      </if>
+      <if test="pf != null" >
+        PF,
+      </if>
+      <if test="pfa != null" >
+        PFA,
+      </if>
+      <if test="pfb != null" >
+        PFB,
+      </if>
+      <if test="pfc != null" >
+        PFC,
+      </if>
+      <if test="energyp != null" >
+        ENERGYP,
+      </if>
+      <if test="energypa != null" >
+        ENERGYPA,
+      </if>
+      <if test="energypb != null" >
+        ENERGYPB,
+      </if>
+      <if test="energypc != null" >
+        ENERGYPC,
+      </if>
+      <if test="energyq != null" >
+        ENERGYQ,
+      </if>
+      <if test="energyqa != null" >
+        ENERGYQA,
+      </if>
+      <if test="energyqb != null" >
+        ENERGYQB,
+      </if>
+      <if test="energyqc != null" >
+        ENERGYQC,
+      </if>
+      <if test="energyap != null" >
+        ENERGYAP,
+      </if>
+      <if test="energyapa != null" >
+        ENERGYAPA,
+      </if>
+      <if test="energyapb != null" >
+        ENERGYAPB,
+      </if>
+      <if test="energyapc != null" >
+        ENERGYAPC,
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="detid != null" >
+        #{detid,jdbcType=INTEGER},
+      </if>
+      <if test="datatime != null" >
+        #{datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="f != null" >
+        #{f,jdbcType=DECIMAL},
+      </if>
+      <if test="fa != null" >
+        #{fa,jdbcType=DECIMAL},
+      </if>
+      <if test="fb != null" >
+        #{fb,jdbcType=DECIMAL},
+      </if>
+      <if test="fc != null" >
+        #{fc,jdbcType=DECIMAL},
+      </if>
+      <if test="p != null" >
+        #{p,jdbcType=DECIMAL},
+      </if>
+      <if test="pa != null" >
+        #{pa,jdbcType=DECIMAL},
+      </if>
+      <if test="pb != null" >
+        #{pb,jdbcType=DECIMAL},
+      </if>
+      <if test="pc != null" >
+        #{pc,jdbcType=DECIMAL},
+      </if>
+      <if test="q != null" >
+        #{q,jdbcType=DECIMAL},
+      </if>
+      <if test="qa != null" >
+        #{qa,jdbcType=DECIMAL},
+      </if>
+      <if test="qb != null" >
+        #{qb,jdbcType=DECIMAL},
+      </if>
+      <if test="qc != null" >
+        #{qc,jdbcType=DECIMAL},
+      </if>
+      <if test="ap != null" >
+        #{ap,jdbcType=DECIMAL},
+      </if>
+      <if test="apa != null" >
+        #{apa,jdbcType=DECIMAL},
+      </if>
+      <if test="apb != null" >
+        #{apb,jdbcType=DECIMAL},
+      </if>
+      <if test="apc != null" >
+        #{apc,jdbcType=DECIMAL},
+      </if>
+      <if test="pf != null" >
+        #{pf,jdbcType=DECIMAL},
+      </if>
+      <if test="pfa != null" >
+        #{pfa,jdbcType=DECIMAL},
+      </if>
+      <if test="pfb != null" >
+        #{pfb,jdbcType=DECIMAL},
+      </if>
+      <if test="pfc != null" >
+        #{pfc,jdbcType=DECIMAL},
+      </if>
+      <if test="energyp != null" >
+        #{energyp,jdbcType=DECIMAL},
+      </if>
+      <if test="energypa != null" >
+        #{energypa,jdbcType=DECIMAL},
+      </if>
+      <if test="energypb != null" >
+        #{energypb,jdbcType=DECIMAL},
+      </if>
+      <if test="energypc != null" >
+        #{energypc,jdbcType=DECIMAL},
+      </if>
+      <if test="energyq != null" >
+        #{energyq,jdbcType=DECIMAL},
+      </if>
+      <if test="energyqa != null" >
+        #{energyqa,jdbcType=DECIMAL},
+      </if>
+      <if test="energyqb != null" >
+        #{energyqb,jdbcType=DECIMAL},
+      </if>
+      <if test="energyqc != null" >
+        #{energyqc,jdbcType=DECIMAL},
+      </if>
+      <if test="energyap != null" >
+        #{energyap,jdbcType=DECIMAL},
+      </if>
+      <if test="energyapa != null" >
+        #{energyapa,jdbcType=DECIMAL},
+      </if>
+      <if test="energyapb != null" >
+        #{energyapb,jdbcType=DECIMAL},
+      </if>
+      <if test="energyapc != null" >
+        #{energyapc,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL2RealExample" resultType="java.lang.Integer" >
+    select count(*) from dat_es_detector_l2_real
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dat_es_detector_l2_real
+    <set >
+      <if test="record.detid != null" >
+        DETID = #{record.detid,jdbcType=INTEGER},
+      </if>
+      <if test="record.datatime != null" >
+        DATATIME = #{record.datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.f != null" >
+        F = #{record.f,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fa != null" >
+        FA = #{record.fa,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fb != null" >
+        FB = #{record.fb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fc != null" >
+        FC = #{record.fc,jdbcType=DECIMAL},
+      </if>
+      <if test="record.p != null" >
+        P = #{record.p,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pa != null" >
+        PA = #{record.pa,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pb != null" >
+        PB = #{record.pb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pc != null" >
+        PC = #{record.pc,jdbcType=DECIMAL},
+      </if>
+      <if test="record.q != null" >
+        Q = #{record.q,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qa != null" >
+        QA = #{record.qa,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qb != null" >
+        QB = #{record.qb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.qc != null" >
+        QC = #{record.qc,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ap != null" >
+        AP = #{record.ap,jdbcType=DECIMAL},
+      </if>
+      <if test="record.apa != null" >
+        APA = #{record.apa,jdbcType=DECIMAL},
+      </if>
+      <if test="record.apb != null" >
+        APB = #{record.apb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.apc != null" >
+        APC = #{record.apc,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pf != null" >
+        PF = #{record.pf,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pfa != null" >
+        PFA = #{record.pfa,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pfb != null" >
+        PFB = #{record.pfb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pfc != null" >
+        PFC = #{record.pfc,jdbcType=DECIMAL},
+      </if>
+      <if test="record.energyp != null" >
+        ENERGYP = #{record.energyp,jdbcType=DECIMAL},
+      </if>
+      <if test="record.energypa != null" >
+        ENERGYPA = #{record.energypa,jdbcType=DECIMAL},
+      </if>
+      <if test="record.energypb != null" >
+        ENERGYPB = #{record.energypb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.energypc != null" >
+        ENERGYPC = #{record.energypc,jdbcType=DECIMAL},
+      </if>
+      <if test="record.energyq != null" >
+        ENERGYQ = #{record.energyq,jdbcType=DECIMAL},
+      </if>
+      <if test="record.energyqa != null" >
+        ENERGYQA = #{record.energyqa,jdbcType=DECIMAL},
+      </if>
+      <if test="record.energyqb != null" >
+        ENERGYQB = #{record.energyqb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.energyqc != null" >
+        ENERGYQC = #{record.energyqc,jdbcType=DECIMAL},
+      </if>
+      <if test="record.energyap != null" >
+        ENERGYAP = #{record.energyap,jdbcType=DECIMAL},
+      </if>
+      <if test="record.energyapa != null" >
+        ENERGYAPA = #{record.energyapa,jdbcType=DECIMAL},
+      </if>
+      <if test="record.energyapb != null" >
+        ENERGYAPB = #{record.energyapb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.energyapc != null" >
+        ENERGYAPC = #{record.energyapc,jdbcType=DECIMAL},
+      </if>
+      <if test="record.updatetime != null" >
+        UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dat_es_detector_l2_real
+    set DETID = #{record.detid,jdbcType=INTEGER},
+      DATATIME = #{record.datatime,jdbcType=TIMESTAMP},
+      F = #{record.f,jdbcType=DECIMAL},
+      FA = #{record.fa,jdbcType=DECIMAL},
+      FB = #{record.fb,jdbcType=DECIMAL},
+      FC = #{record.fc,jdbcType=DECIMAL},
+      P = #{record.p,jdbcType=DECIMAL},
+      PA = #{record.pa,jdbcType=DECIMAL},
+      PB = #{record.pb,jdbcType=DECIMAL},
+      PC = #{record.pc,jdbcType=DECIMAL},
+      Q = #{record.q,jdbcType=DECIMAL},
+      QA = #{record.qa,jdbcType=DECIMAL},
+      QB = #{record.qb,jdbcType=DECIMAL},
+      QC = #{record.qc,jdbcType=DECIMAL},
+      AP = #{record.ap,jdbcType=DECIMAL},
+      APA = #{record.apa,jdbcType=DECIMAL},
+      APB = #{record.apb,jdbcType=DECIMAL},
+      APC = #{record.apc,jdbcType=DECIMAL},
+      PF = #{record.pf,jdbcType=DECIMAL},
+      PFA = #{record.pfa,jdbcType=DECIMAL},
+      PFB = #{record.pfb,jdbcType=DECIMAL},
+      PFC = #{record.pfc,jdbcType=DECIMAL},
+      ENERGYP = #{record.energyp,jdbcType=DECIMAL},
+      ENERGYPA = #{record.energypa,jdbcType=DECIMAL},
+      ENERGYPB = #{record.energypb,jdbcType=DECIMAL},
+      ENERGYPC = #{record.energypc,jdbcType=DECIMAL},
+      ENERGYQ = #{record.energyq,jdbcType=DECIMAL},
+      ENERGYQA = #{record.energyqa,jdbcType=DECIMAL},
+      ENERGYQB = #{record.energyqb,jdbcType=DECIMAL},
+      ENERGYQC = #{record.energyqc,jdbcType=DECIMAL},
+      ENERGYAP = #{record.energyap,jdbcType=DECIMAL},
+      ENERGYAPA = #{record.energyapa,jdbcType=DECIMAL},
+      ENERGYAPB = #{record.energyapb,jdbcType=DECIMAL},
+      ENERGYAPC = #{record.energyapc,jdbcType=DECIMAL},
+      UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL2Real" >
+    update dat_es_detector_l2_real
+    <set >
+      <if test="datatime != null" >
+        DATATIME = #{datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="f != null" >
+        F = #{f,jdbcType=DECIMAL},
+      </if>
+      <if test="fa != null" >
+        FA = #{fa,jdbcType=DECIMAL},
+      </if>
+      <if test="fb != null" >
+        FB = #{fb,jdbcType=DECIMAL},
+      </if>
+      <if test="fc != null" >
+        FC = #{fc,jdbcType=DECIMAL},
+      </if>
+      <if test="p != null" >
+        P = #{p,jdbcType=DECIMAL},
+      </if>
+      <if test="pa != null" >
+        PA = #{pa,jdbcType=DECIMAL},
+      </if>
+      <if test="pb != null" >
+        PB = #{pb,jdbcType=DECIMAL},
+      </if>
+      <if test="pc != null" >
+        PC = #{pc,jdbcType=DECIMAL},
+      </if>
+      <if test="q != null" >
+        Q = #{q,jdbcType=DECIMAL},
+      </if>
+      <if test="qa != null" >
+        QA = #{qa,jdbcType=DECIMAL},
+      </if>
+      <if test="qb != null" >
+        QB = #{qb,jdbcType=DECIMAL},
+      </if>
+      <if test="qc != null" >
+        QC = #{qc,jdbcType=DECIMAL},
+      </if>
+      <if test="ap != null" >
+        AP = #{ap,jdbcType=DECIMAL},
+      </if>
+      <if test="apa != null" >
+        APA = #{apa,jdbcType=DECIMAL},
+      </if>
+      <if test="apb != null" >
+        APB = #{apb,jdbcType=DECIMAL},
+      </if>
+      <if test="apc != null" >
+        APC = #{apc,jdbcType=DECIMAL},
+      </if>
+      <if test="pf != null" >
+        PF = #{pf,jdbcType=DECIMAL},
+      </if>
+      <if test="pfa != null" >
+        PFA = #{pfa,jdbcType=DECIMAL},
+      </if>
+      <if test="pfb != null" >
+        PFB = #{pfb,jdbcType=DECIMAL},
+      </if>
+      <if test="pfc != null" >
+        PFC = #{pfc,jdbcType=DECIMAL},
+      </if>
+      <if test="energyp != null" >
+        ENERGYP = #{energyp,jdbcType=DECIMAL},
+      </if>
+      <if test="energypa != null" >
+        ENERGYPA = #{energypa,jdbcType=DECIMAL},
+      </if>
+      <if test="energypb != null" >
+        ENERGYPB = #{energypb,jdbcType=DECIMAL},
+      </if>
+      <if test="energypc != null" >
+        ENERGYPC = #{energypc,jdbcType=DECIMAL},
+      </if>
+      <if test="energyq != null" >
+        ENERGYQ = #{energyq,jdbcType=DECIMAL},
+      </if>
+      <if test="energyqa != null" >
+        ENERGYQA = #{energyqa,jdbcType=DECIMAL},
+      </if>
+      <if test="energyqb != null" >
+        ENERGYQB = #{energyqb,jdbcType=DECIMAL},
+      </if>
+      <if test="energyqc != null" >
+        ENERGYQC = #{energyqc,jdbcType=DECIMAL},
+      </if>
+      <if test="energyap != null" >
+        ENERGYAP = #{energyap,jdbcType=DECIMAL},
+      </if>
+      <if test="energyapa != null" >
+        ENERGYAPA = #{energyapa,jdbcType=DECIMAL},
+      </if>
+      <if test="energyapb != null" >
+        ENERGYAPB = #{energyapb,jdbcType=DECIMAL},
+      </if>
+      <if test="energyapc != null" >
+        ENERGYAPC = #{energyapc,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where DETID = #{detid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL2Real" >
+    update dat_es_detector_l2_real
+    set DATATIME = #{datatime,jdbcType=TIMESTAMP},
+      F = #{f,jdbcType=DECIMAL},
+      FA = #{fa,jdbcType=DECIMAL},
+      FB = #{fb,jdbcType=DECIMAL},
+      FC = #{fc,jdbcType=DECIMAL},
+      P = #{p,jdbcType=DECIMAL},
+      PA = #{pa,jdbcType=DECIMAL},
+      PB = #{pb,jdbcType=DECIMAL},
+      PC = #{pc,jdbcType=DECIMAL},
+      Q = #{q,jdbcType=DECIMAL},
+      QA = #{qa,jdbcType=DECIMAL},
+      QB = #{qb,jdbcType=DECIMAL},
+      QC = #{qc,jdbcType=DECIMAL},
+      AP = #{ap,jdbcType=DECIMAL},
+      APA = #{apa,jdbcType=DECIMAL},
+      APB = #{apb,jdbcType=DECIMAL},
+      APC = #{apc,jdbcType=DECIMAL},
+      PF = #{pf,jdbcType=DECIMAL},
+      PFA = #{pfa,jdbcType=DECIMAL},
+      PFB = #{pfb,jdbcType=DECIMAL},
+      PFC = #{pfc,jdbcType=DECIMAL},
+      ENERGYP = #{energyp,jdbcType=DECIMAL},
+      ENERGYPA = #{energypa,jdbcType=DECIMAL},
+      ENERGYPB = #{energypb,jdbcType=DECIMAL},
+      ENERGYPC = #{energypc,jdbcType=DECIMAL},
+      ENERGYQ = #{energyq,jdbcType=DECIMAL},
+      ENERGYQA = #{energyqa,jdbcType=DECIMAL},
+      ENERGYQB = #{energyqb,jdbcType=DECIMAL},
+      ENERGYQC = #{energyqc,jdbcType=DECIMAL},
+      ENERGYAP = #{energyap,jdbcType=DECIMAL},
+      ENERGYAPA = #{energyapa,jdbcType=DECIMAL},
+      ENERGYAPB = #{energyapb,jdbcType=DECIMAL},
+      ENERGYAPC = #{energyapc,jdbcType=DECIMAL},
+      UPDATETIME = #{updatetime,jdbcType=TIMESTAMP}
+    where DETID = #{detid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+<!--告警日志  -->
+	<package name="event" namespace="/event" extends="struts-base">
+		<action name="eventLog" class="eventLogAction" method="init">
+			<result name="success">/jsp/event/eventLog.jsp</result>
+		</action>
+	</package>
+	<package name="event_json" namespace="/event" extends="json-base">
+		<action name="eventLog_*" class="eventLogAction" method="{1}">
+			<result type="json" />
+		</action>
+	</package>
+	
+</struts>

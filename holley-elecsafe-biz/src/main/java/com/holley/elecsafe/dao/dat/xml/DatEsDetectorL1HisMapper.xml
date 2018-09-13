@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.holley.elecsafe.dao.dat.DatEsDetectorL1HisMapper" >
+  <resultMap id="BaseResultMap" type="com.holley.elecsafe.model.dat.DatEsDetectorL1His" >
+    <id column="DATATIME" property="datatime" jdbcType="TIMESTAMP" />
+    <id column="DETID" property="detid" jdbcType="INTEGER" />
+    <result column="U" property="u" jdbcType="DECIMAL" />
+    <result column="UA" property="ua" jdbcType="DECIMAL" />
+    <result column="UB" property="ub" jdbcType="DECIMAL" />
+    <result column="UC" property="uc" jdbcType="DECIMAL" />
+    <result column="I" property="i" jdbcType="DECIMAL" />
+    <result column="IA" property="ia" jdbcType="DECIMAL" />
+    <result column="IB" property="ib" jdbcType="DECIMAL" />
+    <result column="IC" property="ic" jdbcType="DECIMAL" />
+    <result column="INX" property="inx" jdbcType="DECIMAL" />
+    <result column="IL" property="il" jdbcType="DECIMAL" />
+    <result column="TA" property="ta" jdbcType="DECIMAL" />
+    <result column="TB" property="tb" jdbcType="DECIMAL" />
+    <result column="TC" property="tc" jdbcType="DECIMAL" />
+    <result column="TN" property="tn" jdbcType="DECIMAL" />
+    <result column="TL" property="tl" jdbcType="DECIMAL" />
+    <result column="TI" property="ti" jdbcType="DECIMAL" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DATATIME, DETID, U, UA, UB, UC, I, IA, IB, IC, INX, IL, TA, TB, TC, TN, TL, TI, UPDATETIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL1HisExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dat_es_detector_l1_his
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL1HisKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from dat_es_detector_l1_his
+    where DATATIME = #{datatime,jdbcType=TIMESTAMP}
+      and DETID = #{detid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL1HisKey" >
+    delete from dat_es_detector_l1_his
+    where DATATIME = #{datatime,jdbcType=TIMESTAMP}
+      and DETID = #{detid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL1HisExample" >
+    delete from dat_es_detector_l1_his
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL1His" >
+    insert into dat_es_detector_l1_his (DATATIME, DETID, U, 
+      UA, UB, UC, I, 
+      IA, IB, IC, INX, 
+      IL, TA, TB, TC, 
+      TN, TL, TI, UPDATETIME
+      )
+    values (#{datatime,jdbcType=TIMESTAMP}, #{detid,jdbcType=INTEGER}, #{u,jdbcType=DECIMAL}, 
+      #{ua,jdbcType=DECIMAL}, #{ub,jdbcType=DECIMAL}, #{uc,jdbcType=DECIMAL}, #{i,jdbcType=DECIMAL}, 
+      #{ia,jdbcType=DECIMAL}, #{ib,jdbcType=DECIMAL}, #{ic,jdbcType=DECIMAL}, #{inx,jdbcType=DECIMAL}, 
+      #{il,jdbcType=DECIMAL}, #{ta,jdbcType=DECIMAL}, #{tb,jdbcType=DECIMAL}, #{tc,jdbcType=DECIMAL}, 
+      #{tn,jdbcType=DECIMAL}, #{tl,jdbcType=DECIMAL}, #{ti,jdbcType=DECIMAL}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL1His" >
+    insert into dat_es_detector_l1_his
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="datatime != null" >
+        DATATIME,
+      </if>
+      <if test="detid != null" >
+        DETID,
+      </if>
+      <if test="u != null" >
+        U,
+      </if>
+      <if test="ua != null" >
+        UA,
+      </if>
+      <if test="ub != null" >
+        UB,
+      </if>
+      <if test="uc != null" >
+        UC,
+      </if>
+      <if test="i != null" >
+        I,
+      </if>
+      <if test="ia != null" >
+        IA,
+      </if>
+      <if test="ib != null" >
+        IB,
+      </if>
+      <if test="ic != null" >
+        IC,
+      </if>
+      <if test="inx != null" >
+        INX,
+      </if>
+      <if test="il != null" >
+        IL,
+      </if>
+      <if test="ta != null" >
+        TA,
+      </if>
+      <if test="tb != null" >
+        TB,
+      </if>
+      <if test="tc != null" >
+        TC,
+      </if>
+      <if test="tn != null" >
+        TN,
+      </if>
+      <if test="tl != null" >
+        TL,
+      </if>
+      <if test="ti != null" >
+        TI,
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="datatime != null" >
+        #{datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="detid != null" >
+        #{detid,jdbcType=INTEGER},
+      </if>
+      <if test="u != null" >
+        #{u,jdbcType=DECIMAL},
+      </if>
+      <if test="ua != null" >
+        #{ua,jdbcType=DECIMAL},
+      </if>
+      <if test="ub != null" >
+        #{ub,jdbcType=DECIMAL},
+      </if>
+      <if test="uc != null" >
+        #{uc,jdbcType=DECIMAL},
+      </if>
+      <if test="i != null" >
+        #{i,jdbcType=DECIMAL},
+      </if>
+      <if test="ia != null" >
+        #{ia,jdbcType=DECIMAL},
+      </if>
+      <if test="ib != null" >
+        #{ib,jdbcType=DECIMAL},
+      </if>
+      <if test="ic != null" >
+        #{ic,jdbcType=DECIMAL},
+      </if>
+      <if test="inx != null" >
+        #{inx,jdbcType=DECIMAL},
+      </if>
+      <if test="il != null" >
+        #{il,jdbcType=DECIMAL},
+      </if>
+      <if test="ta != null" >
+        #{ta,jdbcType=DECIMAL},
+      </if>
+      <if test="tb != null" >
+        #{tb,jdbcType=DECIMAL},
+      </if>
+      <if test="tc != null" >
+        #{tc,jdbcType=DECIMAL},
+      </if>
+      <if test="tn != null" >
+        #{tn,jdbcType=DECIMAL},
+      </if>
+      <if test="tl != null" >
+        #{tl,jdbcType=DECIMAL},
+      </if>
+      <if test="ti != null" >
+        #{ti,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL1HisExample" resultType="java.lang.Integer" >
+    select count(*) from dat_es_detector_l1_his
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dat_es_detector_l1_his
+    <set >
+      <if test="record.datatime != null" >
+        DATATIME = #{record.datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.detid != null" >
+        DETID = #{record.detid,jdbcType=INTEGER},
+      </if>
+      <if test="record.u != null" >
+        U = #{record.u,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ua != null" >
+        UA = #{record.ua,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ub != null" >
+        UB = #{record.ub,jdbcType=DECIMAL},
+      </if>
+      <if test="record.uc != null" >
+        UC = #{record.uc,jdbcType=DECIMAL},
+      </if>
+      <if test="record.i != null" >
+        I = #{record.i,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ia != null" >
+        IA = #{record.ia,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ib != null" >
+        IB = #{record.ib,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ic != null" >
+        IC = #{record.ic,jdbcType=DECIMAL},
+      </if>
+      <if test="record.inx != null" >
+        INX = #{record.inx,jdbcType=DECIMAL},
+      </if>
+      <if test="record.il != null" >
+        IL = #{record.il,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ta != null" >
+        TA = #{record.ta,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tb != null" >
+        TB = #{record.tb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tc != null" >
+        TC = #{record.tc,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tn != null" >
+        TN = #{record.tn,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tl != null" >
+        TL = #{record.tl,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ti != null" >
+        TI = #{record.ti,jdbcType=DECIMAL},
+      </if>
+      <if test="record.updatetime != null" >
+        UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dat_es_detector_l1_his
+    set DATATIME = #{record.datatime,jdbcType=TIMESTAMP},
+      DETID = #{record.detid,jdbcType=INTEGER},
+      U = #{record.u,jdbcType=DECIMAL},
+      UA = #{record.ua,jdbcType=DECIMAL},
+      UB = #{record.ub,jdbcType=DECIMAL},
+      UC = #{record.uc,jdbcType=DECIMAL},
+      I = #{record.i,jdbcType=DECIMAL},
+      IA = #{record.ia,jdbcType=DECIMAL},
+      IB = #{record.ib,jdbcType=DECIMAL},
+      IC = #{record.ic,jdbcType=DECIMAL},
+      INX = #{record.inx,jdbcType=DECIMAL},
+      IL = #{record.il,jdbcType=DECIMAL},
+      TA = #{record.ta,jdbcType=DECIMAL},
+      TB = #{record.tb,jdbcType=DECIMAL},
+      TC = #{record.tc,jdbcType=DECIMAL},
+      TN = #{record.tn,jdbcType=DECIMAL},
+      TL = #{record.tl,jdbcType=DECIMAL},
+      TI = #{record.ti,jdbcType=DECIMAL},
+      UPDATETIME = #{record.updatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL1His" >
+    update dat_es_detector_l1_his
+    <set >
+      <if test="u != null" >
+        U = #{u,jdbcType=DECIMAL},
+      </if>
+      <if test="ua != null" >
+        UA = #{ua,jdbcType=DECIMAL},
+      </if>
+      <if test="ub != null" >
+        UB = #{ub,jdbcType=DECIMAL},
+      </if>
+      <if test="uc != null" >
+        UC = #{uc,jdbcType=DECIMAL},
+      </if>
+      <if test="i != null" >
+        I = #{i,jdbcType=DECIMAL},
+      </if>
+      <if test="ia != null" >
+        IA = #{ia,jdbcType=DECIMAL},
+      </if>
+      <if test="ib != null" >
+        IB = #{ib,jdbcType=DECIMAL},
+      </if>
+      <if test="ic != null" >
+        IC = #{ic,jdbcType=DECIMAL},
+      </if>
+      <if test="inx != null" >
+        INX = #{inx,jdbcType=DECIMAL},
+      </if>
+      <if test="il != null" >
+        IL = #{il,jdbcType=DECIMAL},
+      </if>
+      <if test="ta != null" >
+        TA = #{ta,jdbcType=DECIMAL},
+      </if>
+      <if test="tb != null" >
+        TB = #{tb,jdbcType=DECIMAL},
+      </if>
+      <if test="tc != null" >
+        TC = #{tc,jdbcType=DECIMAL},
+      </if>
+      <if test="tn != null" >
+        TN = #{tn,jdbcType=DECIMAL},
+      </if>
+      <if test="tl != null" >
+        TL = #{tl,jdbcType=DECIMAL},
+      </if>
+      <if test="ti != null" >
+        TI = #{ti,jdbcType=DECIMAL},
+      </if>
+      <if test="updatetime != null" >
+        UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where DATATIME = #{datatime,jdbcType=TIMESTAMP}
+      and DETID = #{detid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.holley.elecsafe.model.dat.DatEsDetectorL1His" >
+    update dat_es_detector_l1_his
+    set U = #{u,jdbcType=DECIMAL},
+      UA = #{ua,jdbcType=DECIMAL},
+      UB = #{ub,jdbcType=DECIMAL},
+      UC = #{uc,jdbcType=DECIMAL},
+      I = #{i,jdbcType=DECIMAL},
+      IA = #{ia,jdbcType=DECIMAL},
+      IB = #{ib,jdbcType=DECIMAL},
+      IC = #{ic,jdbcType=DECIMAL},
+      INX = #{inx,jdbcType=DECIMAL},
+      IL = #{il,jdbcType=DECIMAL},
+      TA = #{ta,jdbcType=DECIMAL},
+      TB = #{tb,jdbcType=DECIMAL},
+      TC = #{tc,jdbcType=DECIMAL},
+      TN = #{tn,jdbcType=DECIMAL},
+      TL = #{tl,jdbcType=DECIMAL},
+      TI = #{ti,jdbcType=DECIMAL},
+      UPDATETIME = #{updatetime,jdbcType=TIMESTAMP}
+    where DATATIME = #{datatime,jdbcType=TIMESTAMP}
+      and DETID = #{detid,jdbcType=INTEGER}
+  </update>
+  <!-- 查询指定日期的历史数据 -->
+  <select id="selectDetByIdAndDate"  parameterType="java.util.Map" resultType="com.holley.elecsafe.model.def.DatEsDetectorL1HisVo">
+  	SELECT 
+  	<include refid="Base_Column_List" />
+    FROM dat_es_detector_l1_his
+    WHERE DETID = #{detid}
+    <if test="dataTime != null">
+    	AND DATE_FORMAT(#{dataTime},'%Y-%m-%d') = DATE_FORMAT(DATATIME,'%Y-%m-%d')  
+    </if>
+    <if test="startDate != null">
+    	AND DATATIME &gt;= #{startDate}
+    </if>
+    <if test="endDate != null">
+    	AND DATATIME &lt;= #{endDate}
+    </if>
+    ORDER BY DATATIME ASC
+  </select>
+  
+  <select id="selectDatEsDetectorL1HisByPage" parameterType="java.util.Map" resultType="com.holley.elecsafe.model.def.DatEsDetectorL1HisVo">
+  	SELECT detector.NAME,detector.TYPE,history.*,
+  	hold.OVERU holdOveru,hold.UNDERU holdUnderu,hold.OVERI holdOveri,hold.IL holdIl,hold.TA holdTa,hold.TB holdTb,hold.TC holdTc,hold.TN holdTn,hold.TL holdTl,hold.TI holdTi
+  	FROM dat_es_detector_l1_his history
+	LEFT JOIN es_detector detector
+	ON detector.ID = history.DETID
+	LEFT JOIN es_detector_threshold hold
+	ON detector.ID = hold.ID
+	WHERE 
+	Find_In_Set(concat(detector.OWNERID,'@11'), Getchildlst(#{eid}, 5))
+	<if test="keyword != null">
+		AND detector.NAME like CONCAT('%',#{keyword},'%')
+	</if>
+	<if test="type != null">
+		AND detector.TYPE = #{type}
+	</if>
+	<if test="startDate != null">
+		AND history.DATATIME &gt;= #{startDate}
+	</if>
+	<if test="endDate != null">
+		AND history.DATATIME &lt;= #{endDate}
+	</if>
+	<if test="status != null">
+		AND detector.STATUS = #{status}
+	</if>
+	ORDER BY history.DATATIME DESC
+  </select>
+</mapper>

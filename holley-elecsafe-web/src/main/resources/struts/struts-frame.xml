@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!--登陆与注册 -->
+	<package name="frame" namespace="/frame" extends="struts-default">
+		<!-- 请求验证码 -->
+		<action name="changecode" class="imageCodeAction" method="createCode">
+			<result name="success" type="stream">
+				<param name="inputName">imageStream</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+		<action name="login" class="loginAction" method="init">
+			<result name="success">/jsp/frame/login.jsp</result>
+			<result name="main" type="redirectAction">
+				<param name="namespace">/main</param>
+				<param name="actionName">main</param>
+			</result>
+		</action>	
+		<action name="logout" class="loginAction" method="logout">
+			<result name="success" type="chain">
+				<param name="actionName">login</param>
+				<param name="namespace">/frame</param>
+			</result>
+		</action>
+	</package>
+	<package name="main" namespace="/main" extends="struts-base">
+		<action name="main" class="mainAction" method="init">
+			<result name="success">/jsp/frame/main.jsp</result>
+		</action>
+		<action name="homepage" class="homepageAction" method="init">
+			<result name="success">/jsp/frame/homepage.jsp</result>
+		</action>
+	</package>
+	
+	<!-- json -->
+	<package name="frame_json" namespace="/frame" extends="json-default">
+		<action name="login_*" class="loginAction" method="{1}">
+			<result type="json" />
+		</action>
+	</package>
+	<package name="main_json" namespace="/main" extends="json-base">
+		<action name="main_*" class="mainAction" method="{1}">
+			<result type="json" />
+		</action>
+		<action name="homepage_*" class="homepageAction" method="{1}">
+			<result type="json" />
+		</action>
+	</package>
+</struts>

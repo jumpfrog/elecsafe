@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 档案管理 -->
+	<package name="record" namespace="/record" extends="struts-base">
+		<!-- 企业信息 -->
+		<action name="enterprise" class="enterpriseAction" method="init">
+			<result name="success">/jsp/record/enterpriseInfo.jsp</result>
+		</action>
+	</package>
+	
+	<!-- json -->
+	<package name="record_json" namespace="/record" extends="json-base">
+		<action name="enterprise_*" class="enterpriseAction" method="{1}">
+			<result type="json" />
+		</action>
+	</package>
+</struts>
